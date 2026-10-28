@@ -747,14 +747,13 @@
       </p>
     </header>
 
-    <!-- PRESETS RÁPIDOS PARA A DINÂMICA COM A SALA -->
+    <!-- PRESETS RÁPIDOS -->
     <section class="archetype-section">
       <div class="archetype-label">
-        <span>Arquétipos Pré-definidos para a Apresentação</span>
-        <span>Carregue na tela ao vivo para contrastar com a turma</span>
+        <span>Arquétipos de Referência</span>
       </div>
       <div class="archetype-grid">
-        <button class="btn-archetype active" id="btnArchCarl" onclick="loadArchetype('carl')">
+        <button class="btn-archetype" id="btnArchCarl" onclick="loadArchetype('carl')">
           <span class="arch-name">🎈 Carl em Crise</span>
           <span class="arch-desc">Sobrecarga, culpa e rigidez "tudo ou nada"</span>
         </button>
@@ -792,11 +791,11 @@
           <div class="dimension-item">
             <div class="dim-header">
               <span class="dim-title">🏠 1. O Peso da Casa (Autocobrança & "Deveria")</span>
-              <span class="dim-meta" id="valD1Badge">8 / 10</span>
+              <span class="dim-meta" id="valD1Badge">-- / 10</span>
             </div>
             <p class="dim-desc">Quanto você sente que "já deveria estar muito mais longe na vida" e carrega culpas do passado como um peso físico?</p>
             <div class="slider-container">
-              <input type="range" id="sliderD1" min="1" max="10" value="8" oninput="updateMetrics()">
+              <input type="range" id="sliderD1" min="1" max="10" value="5" oninput="handleUserInteraction()">
               <div class="slider-labels">
                 <span>Leveza / Autoaceitação</span>
                 <span>Sobrecarga Implacável</span>
@@ -808,11 +807,11 @@
           <div class="dimension-item">
             <div class="dim-header">
               <span class="dim-title">🏺 2. A Jarra Quebrada (Reação aos Imprevistos)</span>
-              <span class="dim-meta" id="valD2Badge">8 / 10</span>
+              <span class="dim-meta" id="valD2Badge">-- / 10</span>
             </div>
             <p class="dim-desc">Quando boletos ou imprevistos adiam um plano de meses: nível de revolta ou sensação de que "nada dá certo para mim"?</p>
             <div class="slider-container">
-              <input type="range" id="sliderD2" min="1" max="10" value="8" oninput="updateMetrics()">
+              <input type="range" id="sliderD2" min="1" max="10" value="5" oninput="handleUserInteraction()">
               <div class="slider-labels">
                 <span>Adaptação e calma</span>
                 <span>Catastrofização ("Tudo ou nada")</span>
@@ -824,11 +823,11 @@
           <div class="dimension-item">
             <div class="dim-header">
               <span class="dim-title">📖 3. O Álbum de Ellie (Ressignificar o Cotidiano)</span>
-              <span class="dim-meta" id="valD3Badge">3 / 10</span>
+              <span class="dim-meta" id="valD3Badge">-- / 10</span>
             </div>
             <p class="dim-desc">Capacidade de reconhecer que a vida já está acontecendo nas rotinas simples, mesmo sem grandes marcos heroicos.</p>
             <div class="slider-container">
-              <input type="range" id="sliderD3" min="1" max="10" value="3" oninput="updateMetrics()">
+              <input type="range" id="sliderD3" min="1" max="10" value="5" oninput="handleUserInteraction()">
               <div class="slider-labels">
                 <span>Filtro mental negativo</span>
                 <span>Reestruturação & Gratidão</span>
@@ -840,11 +839,11 @@
           <div class="dimension-item">
             <div class="dim-header">
               <span class="dim-title">🍦 4. O Sorvete na Calçada (Presença & Vínculo)</span>
-              <span class="dim-meta" id="valD4Badge">4 / 10</span>
+              <span class="dim-meta" id="valD4Badge">-- / 10</span>
             </div>
             <p class="dim-desc">Conseguir saborear um café, uma conversa espontânea ou um momento de descanso sem se culpar por não estar produzindo.</p>
             <div class="slider-container">
-              <input type="range" id="sliderD4" min="1" max="10" value="4" oninput="updateMetrics()">
+              <input type="range" id="sliderD4" min="1" max="10" value="5" oninput="handleUserInteraction()">
               <div class="slider-labels">
                 <span>Anedonia / Piloto automático</span>
                 <span>Presença Plena no Hoje</span>
@@ -856,11 +855,11 @@
           <div class="dimension-item">
             <div class="dim-header">
               <span class="dim-title">🧭 5. A Obsessão de Muntz (Validação & Status)</span>
-              <span class="dim-meta" id="valD5Badge">7 / 10</span>
+              <span class="dim-meta" id="valD5Badge">-- / 10</span>
             </div>
             <p class="dim-desc">Necessidade de provar sucesso para os outros (redes sociais, família), subordinando a própria paz ao aplauso alheio.</p>
             <div class="slider-container">
-              <input type="range" id="sliderD5" min="1" max="10" value="7" oninput="updateMetrics()">
+              <input type="range" id="sliderD5" min="1" max="10" value="5" oninput="handleUserInteraction()">
               <div class="slider-labels">
                 <span>Autonomia de valor</span>
                 <span>Dependência de aplausos</span>
@@ -872,11 +871,11 @@
           <div class="dimension-item">
             <div class="dim-header">
               <span class="dim-title">🛋️ 6. Esvaziar a Mobília (Capacidade de Desapego)</span>
-              <span class="dim-meta" id="valD6Badge">3 / 10</span>
+              <span class="dim-meta" id="valD6Badge">-- / 10</span>
             </div>
             <p class="dim-desc">Habilidade de abrir mão de cobranças antigas, papéis desgastados e objetos que pesam para permitir novos voos.</p>
             <div class="slider-container">
-              <input type="range" id="sliderD6" min="1" max="10" value="3" oninput="updateMetrics()">
+              <input type="range" id="sliderD6" min="1" max="10" value="5" oninput="handleUserInteraction()">
               <div class="slider-labels">
                 <span>Apego rígido e estagnação</span>
                 <span>Desapego & Flexibilidade</span>
@@ -899,9 +898,9 @@
 
         <div class="score-panel">
           <div class="eutimia-header">
-            <span class="score-badge" id="statusBadge">Calculando...</span>
-            <div class="score-number" id="eutimiaValue">34%</div>
-            <span style="font-size: 0.78rem; color: var(--text-muted);">Índice Geral de Flexibilidade Psicológica</span>
+            <span class="score-badge" id="statusBadge">Aguardando Avaliação</span>
+            <div class="score-number" id="eutimiaValue">--%</div>
+            <span style="font-size: 0.78rem; color: var(--text-muted);" id="eutimiaSubtext">Mova os controles ou escolha um arquétipo para iniciar</span>
             
             <div class="score-bar-bg">
               <div class="score-bar-fill" id="statusBarFill"></div>
@@ -914,10 +913,19 @@
           </div>
         </div>
 
+        <!-- MENSAGEM INICIAL DE ESPERA (SEM SPOILER) -->
+        <div id="emptyStatePlaceholder" style="background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.12); border-radius: var(--radius-md); padding: 2rem 1.25rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+          <div style="font-size: 2.2rem; filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));">🎈</div>
+          <div style="font-weight: 700; font-size: 1rem; color: #f8fafc;">Nenhum perfil selecionado</div>
+          <p style="font-size: 0.82rem; color: var(--text-muted); max-width: 380px; line-height: 1.5;">
+            Ajuste os sliders ao lado com base no seu momento de vida atual ou clique em um dos arquétipos no topo para revelar a análise cognitiva da TCC e as técnicas de regulação.
+          </p>
+        </div>
+
         <!-- PAINEL DA TCC (TRÍADE + DISTORÇÃO + PRESCRIÇÃO) -->
-        <div class="tcc-container">
+        <div class="tcc-container" id="tccResultsContainer" style="display: none;">
           
-          <!-- NOVO BLOCO: POR QUE VOCÊ SE SENTE ASSIM? -->
+          <!-- BLOCO: POR QUE VOCÊ SE SENTE ASSIM? -->
           <div class="tcc-box" style="border-left: 4px solid var(--accent-indigo); background: rgba(99, 102, 241, 0.07);">
             <span class="tcc-box-tag" style="color: #a5b4fc;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -931,7 +939,7 @@
 
           <div class="tcc-box">
             <span class="tcc-box-tag">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2v20"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12h20M12 2v20"/></svg>
               Tríade Cognitiva Ativa (Modelo de Beck)
             </span>
             <div class="tcc-triad">
@@ -975,8 +983,8 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             Copiar Síntese da Turma
           </button>
-          <button class="btn btn-secondary" onclick="resetToAverage()">
-            Resetar Média
+          <button class="btn btn-secondary" onclick="resetToEmpty()">
+            Limpar / Zerar
           </button>
         </div>
 
@@ -1021,6 +1029,10 @@
     const eutimiaVal = document.getElementById('eutimiaValue');
     const statusBadge = document.getElementById('statusBadge');
     const statusBarFill = document.getElementById('statusBarFill');
+    const eutimiaSubtext = document.getElementById('eutimiaSubtext');
+
+    const emptyPlaceholder = document.getElementById('emptyStatePlaceholder');
+    const tccContainer = document.getElementById('tccResultsContainer');
 
     const triadSituation = document.getElementById('triadSituation');
     const triadThought = document.getElementById('triadThought');
@@ -1038,6 +1050,8 @@
     const canvas = document.getElementById('radarCanvas');
     const ctx = canvas.getContext('2d');
 
+    let isEvaluated = false;
+
     // Presets dos 4 Arquétipos Principais (com 6 eixos)
     const archetypes = {
       carl: { d1: 9, d2: 8, d3: 2, d4: 3, d5: 7, d6: 2, name: "Carl em Crise" },
@@ -1046,9 +1060,25 @@
       muntz: { d1: 10, d2: 9, d3: 1, d4: 1, d5: 10, d6: 1, name: "Muntz Obcecado" }
     };
 
+    function handleUserInteraction() {
+      if (!isEvaluated) {
+        isEvaluated = true;
+        emptyPlaceholder.style.display = 'none';
+        tccContainer.style.display = 'flex';
+        eutimiaSubtext.textContent = 'Índice Geral de Flexibilidade Psicológica';
+      }
+      document.querySelectorAll('.btn-archetype').forEach(b => b.classList.remove('active'));
+      updateMetrics();
+    }
+
     function loadArchetype(key) {
       const arch = archetypes[key];
       if (!arch) return;
+
+      isEvaluated = true;
+      emptyPlaceholder.style.display = 'none';
+      tccContainer.style.display = 'flex';
+      eutimiaSubtext.textContent = 'Índice Geral de Flexibilidade Psicológica';
 
       s1.value = arch.d1;
       s2.value = arch.d2;
@@ -1067,25 +1097,51 @@
       showToast(`Arquétipo carregado: ${arch.name}`);
     }
 
-    function resetToAverage() {
+    function resetToEmpty() {
+      isEvaluated = false;
       s1.value = 5;
       s2.value = 5;
       s3.value = 5;
       s4.value = 5;
       s5.value = 5;
       s6.value = 5;
+
+      b1.textContent = "-- / 10";
+      b2.textContent = "-- / 10";
+      b3.textContent = "-- / 10";
+      b4.textContent = "-- / 10";
+      b5.textContent = "-- / 10";
+      b6.textContent = "-- / 10";
+
       document.querySelectorAll('.btn-archetype').forEach(b => b.classList.remove('active'));
-      updateMetrics();
-      showToast("Sliders resetados para a média neutra.");
+
+      eutimiaVal.textContent = "--%";
+      statusBadge.textContent = "Aguardando Avaliação";
+      statusBadge.style.background = "rgba(255, 255, 255, 0.05)";
+      statusBadge.style.color = "var(--text-muted)";
+      statusBadge.style.borderColor = "var(--border-subtle)";
+      statusBarFill.style.width = "0%";
+      eutimiaSubtext.textContent = "Mova os controles ou escolha um arquétipo para iniciar";
+
+      emptyPlaceholder.style.display = 'flex';
+      tccContainer.style.display = 'none';
+
+      drawRadarEmpty();
+      showToast("Termômetro zerado com sucesso!");
     }
 
     function updateMetrics() {
-      const v1 = parseInt(s1.value, 10); // Cobrança (-)
-      const v2 = parseInt(s2.value, 10); // Frustração (-)
-      const v3 = parseInt(s3.value, 10); // Álbum Ellie (+)
-      const v4 = parseInt(s4.value, 10); // Sorvete Russell (+)
-      const v5 = parseInt(s5.value, 10); // Obsessão Muntz (-)
-      const v6 = parseInt(s6.value, 10); // Desapego Mobília (+)
+      if (!isEvaluated) {
+        drawRadarEmpty();
+        return;
+      }
+
+      const v1 = parseInt(s1.value, 10);
+      const v2 = parseInt(s2.value, 10);
+      const v3 = parseInt(s3.value, 10);
+      const v4 = parseInt(s4.value, 10);
+      const v5 = parseInt(s5.value, 10);
+      const v6 = parseInt(s6.value, 10);
 
       // Atualiza os badges
       b1.textContent = `${v1} / 10`;
@@ -1095,11 +1151,9 @@
       b5.textContent = `${v5} / 10`;
       b6.textContent = `${v6} / 10`;
 
-      // Cálculo de Eutimia e Flexibilidade:
-      // Fatores de Carga Disfuncional (v1, v2, v5)
-      const negativeLoad = ((v1 - 1) + (v2 - 1) + (v5 - 1)) / 27; // 0 a 1
-      // Fatores de Recursos Adaptativos (v3, v4, v6)
-      const positiveResources = ((v3 - 1) + (v4 - 1) + (v6 - 1)) / 27; // 0 a 1
+      // Cálculo de Eutimia e Flexibilidade
+      const negativeLoad = ((v1 - 1) + (v2 - 1) + (v5 - 1)) / 27;
+      const positiveResources = ((v3 - 1) + (v4 - 1) + (v6 - 1)) / 27;
 
       let score = Math.round(((1 - negativeLoad) * 0.55 + positiveResources * 0.45) * 100);
       score = Math.max(5, Math.min(98, score));
@@ -1211,7 +1265,81 @@
       }
     }
 
-    // Desenha o Radar de 6 Eixos
+    // Desenha o Radar de 6 Eixos Neutro (Sem preenchimento / Aguardando)
+    function drawRadarEmpty() {
+      const w = canvas.width;
+      const h = canvas.height;
+      const centerX = w / 2;
+      const centerY = h / 2;
+      const radius = w * 0.38;
+
+      ctx.clearRect(0, 0, w, h);
+
+      const labels = [
+        "1. Cobrança",
+        "2. Frustração",
+        "3. Álbum Ellie",
+        "4. Presença",
+        "5. Obsessão",
+        "6. Desapego"
+      ];
+
+      const angles = [];
+      for (let i = 0; i < 6; i++) {
+        angles.push(-Math.PI / 2 + (i * Math.PI / 3));
+      }
+
+      // Teias Concéntricas
+      ctx.lineWidth = 1;
+      const levels = 4;
+      for (let l = 1; l <= levels; l++) {
+        const r = (radius / levels) * l;
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
+        for (let i = 0; i < 6; i++) {
+          const x = centerX + r * Math.cos(angles[i]);
+          const y = centerY + r * Math.sin(angles[i]);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+      // Eixos Radiais e Texto
+      for (let i = 0; i < 6; i++) {
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + radius * Math.cos(angles[i]), centerY + radius * Math.sin(angles[i]));
+        ctx.stroke();
+
+        const labelR = radius + 22;
+        const lx = centerX + labelR * Math.cos(angles[i]);
+        const ly = centerY + labelR * Math.sin(angles[i]);
+        ctx.fillStyle = "#64748b";
+        ctx.font = "11px Inter, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(labels[i], lx, ly);
+      }
+
+      // Linha tracejada neutra de referência
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
+      ctx.setLineDash([4, 4]);
+      for (let i = 0; i < 6; i++) {
+        const nx = centerX + radius * 0.5 * Math.cos(angles[i]);
+        const ny = centerY + radius * 0.5 * Math.sin(angles[i]);
+        if (i === 0) ctx.moveTo(nx, ny);
+        else ctx.lineTo(nx, ny);
+      }
+      ctx.closePath();
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // Desenha o Radar de 6 Eixos Preenchido
     function drawRadar(v1, v2, v3, v4, v5, v6, score) {
       const w = canvas.width;
       const h = canvas.height;
@@ -1221,7 +1349,6 @@
 
       ctx.clearRect(0, 0, w, h);
 
-      // 6 Rótulos e Ângulos (60 graus cada)
       const labels = [
         "1. Cobrança",
         "2. Frustração",
@@ -1242,7 +1369,6 @@
 
       const angles = [];
       for (let i = 0; i < 6; i++) {
-        // Começa no topo (-PI/2) e avança 60 graus (PI/3)
         angles.push(-Math.PI / 2 + (i * Math.PI / 3));
       }
 
@@ -1271,7 +1397,6 @@
         ctx.lineTo(centerX + radius * Math.cos(angles[i]), centerY + radius * Math.sin(angles[i]));
         ctx.stroke();
 
-        // Rótulos
         const labelR = radius + 22;
         const lx = centerX + labelR * Math.cos(angles[i]);
         const ly = centerY + labelR * Math.sin(angles[i]);
@@ -1341,6 +1466,11 @@
 
     // Copiar Síntese da Apresentação
     function copyReport() {
+      if (!isEvaluated) {
+        showToast("Selecione um arquétipo ou ajuste os sliders antes de copiar!");
+        return;
+      }
+
       const score = eutimiaVal.textContent;
       const status = statusBadge.textContent;
       const dist = distortionTitle.textContent;
@@ -1380,7 +1510,7 @@
     }
 
     window.addEventListener('load', () => {
-      updateMetrics();
+      resetToEmpty();
     });
   </script>
 </body>
