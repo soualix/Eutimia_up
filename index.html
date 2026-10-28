@@ -773,6 +773,64 @@
       -webkit-text-fill-color: transparent;
       font-weight: 700;
     }
+
+    /* BANNER DE AVISO ÉTICO / NÃO-AUTODIAGNÓSTICO */
+    .ethical-disclaimer-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(239, 68, 68, 0.08) 100%);
+      border: 1.5px solid rgba(245, 158, 11, 0.38);
+      border-left: 5px solid #f59e0b;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      box-shadow: 0 4px 20px -5px rgba(245, 158, 11, 0.15);
+      position: relative;
+    }
+
+    .disclaimer-icon-box {
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+    }
+
+    .disclaimer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .disclaimer-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .disclaimer-text {
+      font-size: 0.81rem;
+      color: #f1f5f9;
+      line-height: 1.45;
+    }
+
+    .disclaimer-text strong {
+      color: #fef08a;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   </style>
 </head>
 <body>
@@ -837,6 +895,27 @@
         </div>
       </div>
     </header>
+
+    <!-- BANNER DE AVISO ÉTICO E DIDÁTICO (NÃO É AUTODIAGNÓSTICO) -->
+    <section class="ethical-disclaimer-banner" role="alert">
+      <div class="disclaimer-icon-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <div class="disclaimer-content">
+        <div class="disclaimer-title">
+          <span>Aviso Acadêmico &amp; Psicoeducativo</span>
+        </div>
+        <p class="disclaimer-text">
+          Este ambiente é um <strong>quiz didático e reflexivo</strong> elaborado para atividade acadêmica na disciplina de <em>Processos Psicológicos Contemporâneos</em>. 
+          Ele utiliza metáforas cinematográficas e princípios da TCC com finalidade puramente pedagógica e de debate em sala de aula. 
+          <strong>NÃO constitui avaliação psicológica, psicodiagnóstico clínico, laudo nem substituto para psicoterapia com profissional de Psicologia.</strong>
+        </p>
+      </div>
+    </section>
 
     <!-- PRESETS RÁPIDOS -->
     <section class="archetype-section">
