@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termômetro de Eutimia & Flexibilidade Cognitiva - Up (TCC)</title>
+  
+  <!-- Fontes Google Inter e Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(18, 25, 43, 0.75);
+      --bg-card-hover: rgba(26, 36, 62, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(99, 102, 241, 0.25);
+      
+      --accent-cyan: #06b6d4;
+      --accent-indigo: #6366f1;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-purple: #a855f7;
+      
+      /* Cores temáticas Up */
+      --up-yellow: #fbbf24;
+      --up-blue: #38bdf8;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      /* Imagem de fundo com a casinha do Up nas nuvens e overlays graduados para contraste perfeito */
+      background: 
+        linear-gradient(180deg, rgba(9, 13, 22, 0.88) 0%, rgba(9, 13, 22, 0.82) 40%, rgba(9, 13, 22, 0.94) 100%),
+        radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.2) 0%, transparent 60%),
+        url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat fixed;
+      position: relative;
+    }
+
+    /* Ilustração flutuante da Casinha com Balões de Up como elemento de ambientação */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 5%;
+      right: 4%;
+      width: clamp(160px, 20vw, 290px);
+      height: clamp(220px, 28vw, 380px);
+      background: url('https://upload.wikimedia.org/wikipedia/en/0/05/Up_%282009_film%29.jpg') no-repeat center center;
+      background-size: cover;
+      border-radius: var(--radius-lg);
+      opacity: 0.12;
+      filter: drop-shadow(0 0 35px rgba(251, 191, 36, 0.3)) saturate(1.4);
+      pointer-events: none;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 75%);
+      animation: floatHouse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatHouse {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-16px) rotate(1.5deg);
+      }
+      100% {
+        transform: translateY(-6px) rotate(-1deg);
+      }
+    }
+
+    /* Container Principal */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Container Principal */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Cabeçalho */
+    header {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .tag-up {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--up-yellow);
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+
+    .tag-tcc {
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, var(--up-yellow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      max-width: 850px;
+    }
+
+    /* Seletor de Arquétipos Rápidos */
+    .archetype-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+    }
+
+    .archetype-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .archetype-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .btn-archetype {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .btn-archetype:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-archetype.active {
+      border-color: var(--accent-indigo);
+      background: rgba(99, 102, 241, 0.15);
+      box-shadow: 0 0 15px -3px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-archetype .arch-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-archetype .arch-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Grid Principal da Aplicação */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 992px) {
+      .main-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    /* Card Genérico */
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .card-title-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Sliders de Dimensão */
+    .dimension-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .dimension-item {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      transition: border-color 0.2s;
+    }
+
+    .dimension-item:focus-within,
+    .dimension-item:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .dim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.35rem;
+    }
+
+    .dim-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .dim-meta {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .dim-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    /* Input Range Customizado */
+    .slider-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+
+    input[type=range]:focus {
+      outline: none;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -7px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(99, 102, 241, 0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    input[type=range]::-webkit-slider-thumb:hover,
+    input[type=range]:active::-webkit-slider-thumb {
+      transform: scale(1.15);
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.8), 0 0 0 4px rgba(99, 102, 241, 0.6);
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    /* Painel Central de Eutimia & Radar */
+    .score-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .eutimia-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      width: 100%;
+    }
+
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .score-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .score-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      width: 50%;
+      border-radius: var(--radius-full);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s;
+    }
+
+    /* Canvas do Radar */
+    .radar-container {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Painel Diagnóstico e Prescrição TCC */
+    .tcc-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .tcc-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tcc-box-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .tcc-box-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .tcc-triad {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .triad-col {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent-indigo);
+    }
+
+    .triad-col strong {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .prescription-box {
+      border-left: 4px solid var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    .prescription-box .tcc-box-title {
+      color: #6ee7b7;
+    }
+
+    .prescription-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      padding-left: 1.1rem;
+    }
+
+    /* Ações e Botões de Engajamento */
+    .actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      flex: 1;
+      min-width: 150px;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent-indigo);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #4f46e5;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Toast de Notificação */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      padding: 1rem 0;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- CABEÇALHO -->
+    <header>
+      <div class="badge-bar">
+        <span class="tag tag-tcc">TCC Básica • 2º Semestre</span>
+        <span class="tag tag-up">Filme: Up - Altas Aventuras</span>
+        <span class="tag">Equipe 5 • Psicologia</span>
+      </div>
+      <h1>Termômetro de Eutimia & Flexibilidade Cognitiva</h1>
+      <p class="subtitle">
+        Aplicação interativa para autoavaliação e regulação emocional na vida adulta (28 a 42 anos). Avalie os eixos do modelo cognitivo de Beck através das metáforas de Carl, Ellie e Russell.
+      </p>
+    </header>
+
+    <!-- SELETOR RÁPIDO DE ARQUÉTIPOS (DEMONSTRAÇÃO NA AULA) -->
+    <section class="archetype-section">
+      <div class="archetype-label">
+        <span>Arquétipos Pré-definidos para Apresentação</span>
+        <span>Clique para carregar no telão</span>
+      </div>
+      <div class="archetype-grid">
+        <button class="btn-archetype active" id="btnArchCarl" onclick="loadArchetype('carl')">
+          <span class="arch-name">🎈 Carl Fredricksen</span>
+          <span class="arch-desc">Sobrecarga, luto e rigidez "tudo ou nada"</span>
+        </button>
+        <button class="btn-archetype" id="btnArchMuntz" onclick="loadArchetype('muntz')">
+          <span class="arch-name">⚔️ Charles Muntz</span>
+          <span class="arch-desc">Obsessão cega por provar valor externo</span>
+        </button>
+        <button class="btn-archetype" id="btnArchRussell" onclick="loadArchetype('russell')">
+          <span class="arch-name">🍫 Russell</span>
+          <span class="arch-desc">Presença plena e afeto sem cobrança</span>
+        </button>
+        <button class="btn-archetype" id="btnArchEllie" onclick="loadArchetype('ellie')">
+          <span class="arch-name">📖 Ellie (Eutimia)</span>
+          <span class="arch-desc">Equilíbrio, ressignificação e processo</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- GRID PRINCIPAL -->
+    <div class="main-grid">
+      
+      <!-- COLUNA 1: SLIDERS DAS 4 DIMENSÕES PSICOLÓGICAS -->
+      <section class="card">
+        <div class="card-title-box">
+          <h2 class="card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+            Dimensões Cognitivas & Comportamentais
+          </h2>
+          <span style="font-size: 0.75rem; color: var(--text-dim);">Escala de 1 a 10</span>
+        </div>
+
+        <div class="dimension-list">
+          
+          <!-- D1: Autocobrança / Casa de Carl -->
+          <div class="dimension-item">
+            <div class="dim-header">
+              <span class="dim-title">🏠 1. Peso da Autocobrança ("A Casa de Carl")</span>
+              <span class="dim-meta" id="valD1Badge">8 / 10</span>
+            </div>
+            <p class="dim-desc">Quanto você sente que "já deveria estar muito mais longe" e carrega culpas do passado como um peso físico?</p>
+            <div class="slider-container">
+              <input type="range" id="sliderD1" min="1" max="10" value="8" oninput="updateMetrics()">
+              <div class="slider-labels">
+                <span>Leveza / Autoaceitação</span>
+                <span>Sobrecarga Extrema</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- D2: Frustração / Jarra Quebrada -->
+          <div class="dimension-item">
+            <div class="dim-header">
+              <span class="dim-title">🏺 2. Reação ao Imprevisto ("A Jarra Quebrada")</span>
+              <span class="dim-meta" id="valD2Badge">8 / 10</span>
+            </div>
+            <p class="dim-desc">Quando um boleto ou imprevisto adia seus planos: qual o nível de revolta ou sensação de que "nada dá certo"?</p>
+            <div class="slider-container">
+              <input type="range" id="sliderD2" min="1" max="10" value="8" oninput="updateMetrics()">
+              <div class="slider-labels">
+                <span>Adaptação e calma</span>
+                <span>Catastrofização ("Tudo ou nada")</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- D3: Presença / Sorvete de Russell -->
+          <div class="dimension-item">
+            <div class="dim-header">
+              <span class="dim-title">🍦 3. Presença & Saboreio Cotidiano ("O Sorvete")</span>
+              <span class="dim-meta" id="valD3Badge">3 / 10</span>
+            </div>
+            <p class="dim-desc">Capacidade de saborear conversas simples, pausas e pequenas conexões reais sem se culpar por não estar produzindo.</p>
+            <div class="slider-container">
+              <input type="range" id="sliderD3" min="1" max="10" value="3" oninput="updateMetrics()">
+              <div class="slider-labels">
+                <span>Anedonia / Desconexão</span>
+                <span>Presença Plena no Hoje</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- D4: Rigidez / Obsessão de Muntz -->
+          <div class="dimension-item">
+            <div class="dim-header">
+              <span class="dim-title">🧭 4. Rigidez de Metas ("A Obsessão de Muntz")</span>
+              <span class="dim-meta" id="valD4Badge">7 / 10</span>
+            </div>
+            <p class="dim-desc">Insistência cega em metas que estão custando sua saúde mental ou afastando as pessoas que você ama.</p>
+            <div class="slider-container">
+              <input type="range" id="sliderD4" min="1" max="10" value="7" oninput="updateMetrics()">
+              <div class="slider-labels">
+                <span>Flexibilidade de rota</span>
+                <span>Fanatismo por validação</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- COLUNA 2: RADAR CANVAS + RESULTADO DE EUTIMIA -->
+      <section class="card">
+        <div class="card-title-box">
+          <h2 class="card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Estado Atual & Balanço de Eutimia
+          </h2>
+          <span style="font-size: 0.75rem; color: var(--text-dim);">Tempo Real</span>
+        </div>
+
+        <div class="score-panel">
+          <div class="eutimia-header">
+            <span class="score-badge" id="statusBadge">Analisando...</span>
+            <div class="score-number" id="eutimiaValue">32%</div>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">Índice Geral de Eutimia e Flexibilidade</span>
+            
+            <div class="score-bar-bg">
+              <div class="score-bar-fill" id="statusBarFill"></div>
+            </div>
+          </div>
+
+          <!-- Canvas Gráfico Radar Interativo -->
+          <div class="radar-container">
+            <canvas id="radarCanvas" width="300" height="300"></canvas>
+          </div>
+        </div>
+
+        <!-- PAINEL DA TCC (TRÍADE + ARMADILHA + PRESCRIÇÃO) -->
+        <div class="tcc-container">
+          
+          <div class="tcc-box">
+            <span class="tcc-box-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2v20"/></svg>
+              Tríade Cognitiva da TCC
+            </span>
+            <div class="tcc-triad">
+              <div class="triad-col">
+                <strong>Situação / Gatilho</strong>
+                <span id="triadSituation">Imprevistos de rotina que atrasam o plano ideal.</span>
+              </div>
+              <div class="triad-col">
+                <strong>Pensamento Automático</strong>
+                <span id="triadThought">"Se não for do meu jeito, falhei completamente."</span>
+              </div>
+              <div class="triad-col">
+                <strong>Reação Emocional</strong>
+                <span id="triadEmotion">Amargura, frustração e isolamento social.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tcc-box">
+            <span class="tcc-box-tag">Armadilha Mental Dominante (Distorção)</span>
+            <div class="tcc-box-title" id="distortionTitle">Pensamento Tudo ou Nada (Polarizado)</div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);" id="distortionDesc">
+              A crença de que qualquer desvio da meta perfeita anula todo o esforço e amor construídos até aqui.
+            </p>
+          </div>
+
+          <div class="tcc-box prescription-box">
+            <span class="tcc-box-tag" style="color: #6ee7b7;">Prescrição de Regulação Emocional (TCC)</span>
+            <div class="tcc-box-title" id="prescTitle">Técnica: Esvaziar a Mobília da Casa</div>
+            <ol class="prescription-steps" id="prescSteps">
+              <li>Identifique 1 cobrança externa que não depende 100% de você.</li>
+              <li>Pratique o teste de evidências de Ellie: "O que de bom aconteceu enquanto o plano mudava?".</li>
+              <li>Ativação comportamental: 15 minutos saboreando uma pausa real hoje.</li>
+            </ol>
+          </div>
+
+        </div>
+
+        <div class="actions-bar">
+          <button class="btn btn-primary" onclick="copyReport()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar Síntese da Turma
+          </button>
+          <button class="btn btn-secondary" onclick="resetToAverage()">
+            Resetar Média
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer>
+      Trabalho de Regulação Emocional • Equipe 5 • 2º Semestre de Psicologia • Baseado em Aaron Beck & Up: Altas Aventuras
+    </footer>
+
+  </div>
+
+  <!-- TOAST DE NOTIFICAÇÃO -->
+  <div class="toast" id="toastBox">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+    <span id="toastMsg">Relatório copiado com sucesso!</span>
+  </div>
+
+  <script>
+    // Elementos dos Sliders
+    const s1 = document.getElementById('sliderD1');
+    const s2 = document.getElementById('sliderD2');
+    const s3 = document.getElementById('sliderD3');
+    const s4 = document.getElementById('sliderD4');
+
+    // Badges de Valores
+    const b1 = document.getElementById('valD1Badge');
+    const b2 = document.getElementById('valD2Badge');
+    const b3 = document.getElementById('valD3Badge');
+    const b4 = document.getElementById('valD4Badge');
+
+    // Elementos de Diagnóstico
+    const eutimiaVal = document.getElementById('eutimiaValue');
+    const statusBadge = document.getElementById('statusBadge');
+    const statusBarFill = document.getElementById('statusBarFill');
+
+    const triadSituation = document.getElementById('triadSituation');
+    const triadThought = document.getElementById('triadThought');
+    const triadEmotion = document.getElementById('triadEmotion');
+
+    const distortionTitle = document.getElementById('distortionTitle');
+    const distortionDesc = document.getElementById('distortionDesc');
+    const prescTitle = document.getElementById('prescTitle');
+    const prescSteps = document.getElementById('prescSteps');
+
+    // Canvas
+    const canvas = document.getElementById('radarCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Perfis Pré-configurados
+    const archetypes = {
+      carl: { d1: 9, d2: 8, d3: 2, d4: 8, name: "Carl Fredricksen" },
+      muntz: { d1: 10, d2: 9, d3: 1, d4: 10, name: "Charles Muntz" },
+      russell: { d1: 2, d2: 3, d3: 10, d4: 3, name: "Russell" },
+      ellie: { d1: 3, d2: 3, d3: 9, d4: 2, name: "Ellie Fredricksen" }
+    };
+
+    function loadArchetype(key) {
+      const arch = archetypes[key];
+      if (!arch) return;
+
+      s1.value = arch.d1;
+      s2.value = arch.d2;
+      s3.value = arch.d3;
+      s4.value = arch.d4;
+
+      document.querySelectorAll('.btn-archetype').forEach(b => b.classList.remove('active'));
+      if (key === 'carl') document.getElementById('btnArchCarl').classList.add('active');
+      if (key === 'muntz') document.getElementById('btnArchMuntz').classList.add('active');
+      if (key === 'russell') document.getElementById('btnArchRussell').classList.add('active');
+      if (key === 'ellie') document.getElementById('btnArchEllie').classList.add('active');
+
+      updateMetrics();
+      showToast(`Arquétipo carregado: ${arch.name}`);
+    }
+
+    function resetToAverage() {
+      s1.value = 5;
+      s2.value = 5;
+      s3.value = 5;
+      s4.value = 5;
+      document.querySelectorAll('.btn-archetype').forEach(b => b.classList.remove('active'));
+      updateMetrics();
+      showToast("Sliders resetados para a média neutra.");
+    }
+
+    // Cálculo e Atualização
+    function updateMetrics() {
+      const v1 = parseInt(s1.value, 10);
+      const v2 = parseInt(s2.value, 10);
+      const v3 = parseInt(s3.value, 10);
+      const v4 = parseInt(s4.value, 10);
+
+      // Atualiza Badges numéricos
+      b1.textContent = `${v1} / 10`;
+      b2.textContent = `${v2} / 10`;
+      b3.textContent = `${v3} / 10`;
+      b4.textContent = `${v4} / 10`;
+
+      // Fórmula de Eutimia:
+      // Presença conta positivo (peso alto)
+      // Cobrança, Frustração desadaptativa e Rigidez penalizam a estabilidade
+      const negativeLoad = ((v1 - 1) + (v2 - 1) + (v4 - 1)) / 27; // 0 a 1
+      const positivePresence = (v3 - 1) / 9; // 0 a 1
+
+      let score = Math.round(((1 - negativeLoad) * 0.65 + positivePresence * 0.35) * 100);
+      score = Math.max(5, Math.min(98, score));
+
+      eutimiaVal.textContent = `${score}%`;
+      statusBarFill.style.width = `${score}%`;
+
+      // Define Estado Psicológico e Diagnósticos de TCC
+      applyTccDiagnosis(score, v1, v2, v3, v4);
+
+      // Desenha o Radar Canvas
+      drawRadar(v1, v2, v3, v4, score);
+    }
+
+    function applyTccDiagnosis(score, v1, v2, v3, v4) {
+      if (score >= 70) {
+        // EUTIMIA PLENA (Ellie)
+        statusBadge.textContent = "Eutimia Plena & Flexibilidade";
+        statusBadge.style.background = "rgba(16, 185, 129, 0.15)";
+        statusBadge.style.color = "#6ee7b7";
+        statusBadge.style.borderColor = "rgba(16, 185, 129, 0.4)";
+        statusBarFill.style.backgroundColor = "#10b981";
+
+        triadSituation.textContent = "Planos alterados por imprevistos normais do cotidiano.";
+        triadThought.textContent = "'A vida acontece no caminho. O que vivemos juntos tem valor real.'";
+        triadEmotion.textContent = "Paz, serenidade, gratidão e flexibilidade comportamental.";
+
+        distortionTitle.textContent = "Pensamento Funcional & Adaptativo";
+        distortionDesc.textContent = "Capacidade de reenquadrar a realidade (Reestruturação Cognitiva). O indivíduo valoriza os afetos e o processo, não apenas a meta grandiosa.";
+
+        prescTitle.textContent = "Manutenção: O Livro das Próximas Aventuras";
+        prescSteps.innerHTML = `
+          <li>Manter o registro semanal de pequenos momentos significativos com pessoas queridas.</li>
+          <li>Compartilhar essa estabilidade com pessoas próximas que estejam sobrecarregadas.</li>
+          <li>Planejar novos passos sem perder o saboreio do presente.</li>
+        `;
+      } else if (v4 >= 8 && v1 >= 8) {
+        // PERFIL MUNTZ (Obsessão por validação e rigidez extrema)
+        statusBadge.textContent = "Disforia Obsessiva (Padrão Muntz)";
+        statusBadge.style.background = "rgba(244, 63, 94, 0.15)";
+        statusBadge.style.color = "#fda4af";
+        statusBadge.style.borderColor = "rgba(244, 63, 94, 0.4)";
+        statusBarFill.style.backgroundColor = "#f43f5e";
+
+        triadSituation.textContent = "Cobrança profissional extrema e necessidade de provar valor.";
+        triadThought.textContent = "'Preciso ser o melhor a qualquer custo, senão minha vida foi um erro.'";
+        triadEmotion.textContent = "Hostilidade, paranoia defensiva e isolamento afetivo crônico.";
+
+        distortionTitle.textContent = "Imperativos Rígidos ('Eu Deveria') e Catastrofização";
+        distortionDesc.textContent = "A pessoa subordina todo o seu afeto e saúde a uma validação pública ou profissional que nunca traz saciedade duradoura.";
+
+        prescTitle.textContent = "Intervenção: Auditoria de Danos & Quebra de Rigidez";
+        prescSteps.innerHTML = `
+          <li>Listar o que essa obsessão já custou: sono, relacionamentos e saúde mental.</li>
+          <li>Estabelecer 'limites inegociáveis de descanso' protegidos no calendário.</li>
+          <li>Trabalhar na TCC a crença de desamor: 'Meu valor não depende de aplausos eternos'.</li>
+        `;
+      } else if (score < 45 && v3 <= 4) {
+        // PERFIL CARL (Sobrecarga, culpa e anedonia)
+        statusBadge.textContent = "Hipotimia Rígida (Padrão Carl Fredricksen)";
+        statusBadge.style.background = "rgba(245, 158, 11, 0.15)";
+        statusBadge.style.color = "#fcd34d";
+        statusBadge.style.borderColor = "rgba(245, 158, 11, 0.4)";
+        statusBarFill.style.backgroundColor = "#f59e0b";
+
+        triadSituation.textContent = "A jarra de economias quebrou; imprevistos adiam a meta.";
+        triadThought.textContent = "'Eu estraguei tudo. Eu deveria ter alcançado muito mais nessa idade.'";
+        triadEmotion.textContent = "Amargura, frustração com a rotina e isolamento social.";
+
+        distortionTitle.textContent = "Pensamento Tudo ou Nada & Filtro Negativo";
+        distortionDesc.textContent = "Focar exclusivamente no destino não alcançado, desqualificando 50 anos de convivência afetuosa e pequenas vitórias diárias.";
+
+        prescTitle.textContent = "Técnica: Esvaziar a Mobília da Casa";
+        prescSteps.innerHTML = `
+          <li>Identificar duas cobranças pesadas que você herdou e pode 'jogar pela janela'.</li>
+          <li>Exame de Evidências: 'O atraso dessa meta realmente anula quem eu sou?'.</li>
+          <li>Ativação comportamental: 1 conversa leve de 20 minutos com alguém querido sem falar de trabalho.</li>
+        `;
+      } else {
+        // PERFIL RUSSELL (Espontâneo / Disperso)
+        statusBadge.textContent = "Espontaneidade Lúdica (Padrão Russell)";
+        statusBadge.style.background = "rgba(6, 182, 212, 0.15)";
+        statusBadge.style.color = "#67e8f9";
+        statusBadge.style.borderColor = "rgba(6, 182, 212, 0.4)";
+        statusBarFill.style.backgroundColor = "#06b6d4";
+
+        triadSituation.textContent = "Cotidiano leve, porém com carência afetiva ou falta de direção.";
+        triadThought.textContent = "'Gosto de estar aqui, mas às vezes me sinto sozinho ou sem rumo.'";
+        triadEmotion.textContent = "Curiosidade, afeto genuíno e busca por figuras de referência.";
+
+        distortionTitle.textContent = "Atenção Plena Espontânea (Mindfulness Natural)";
+        distortionDesc.textContent = "Capacidade exemplar de saborear o 'sorvete na calçada', necessitando apenas de suporte para estruturar metas funcionais de longo prazo.";
+
+        prescTitle.textContent = "Fortalecimento: Estruturação com Afeto";
+        prescSteps.innerHTML = `
+          <li>Canalizar a energia espontânea para 1 meta realista por vez.</li>
+          <li>Fortalecer laços com mentores e amigos maduros de confiança.</li>
+          <li>Celebrar as microvitórias com a 'insígnia da tampinha de guaraná'.</li>
+        `;
+      }
+    }
+
+    // Renderização do Canvas Radar
+    function drawRadar(v1, v2, v3, v4, score) {
+      const w = canvas.width;
+      const h = canvas.height;
+      const centerX = w / 2;
+      const centerY = h / 2;
+      const radius = w * 0.38;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Eixos e Nomes
+      const labels = [
+        "1. Cobrança",
+        "2. Frustração",
+        "3. Presença",
+        "4. Rigidez"
+      ];
+      const values = [v1 / 10, v2 / 10, v3 / 10, v4 / 10];
+      const angles = [
+        -Math.PI / 2,         // Topo: Cobrança
+        0,                    // Direita: Frustração
+        Math.PI / 2,          // Fundo: Presença
+        Math.PI               // Esquerda: Rigidez
+      ];
+
+      // Desenhar Teias Concéntricas
+      ctx.lineWidth = 1;
+      const levels = 4;
+      for (let l = 1; l <= levels; l++) {
+        const r = (radius / levels) * l;
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+        for (let i = 0; i < 4; i++) {
+          const x = centerX + r * Math.cos(angles[i]);
+          const y = centerY + r * Math.sin(angles[i]);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+      // Desenhar Eixos Radiais
+      for (let i = 0; i < 4; i++) {
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + radius * Math.cos(angles[i]), centerY + radius * Math.sin(angles[i]));
+        ctx.stroke();
+
+        // Rótulos
+        const labelR = radius + 22;
+        const lx = centerX + labelR * Math.cos(angles[i]);
+        const ly = centerY + labelR * Math.sin(angles[i]);
+        ctx.fillStyle = "#94a3b8";
+        ctx.font = "11px Inter, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(labels[i], lx, ly);
+      }
+
+      // Zona de Eutimia Ideal (Área verde de referência)
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(16, 185, 129, 0.08)";
+      ctx.strokeStyle = "rgba(16, 185, 129, 0.3)";
+      ctx.setLineDash([3, 3]);
+      const idealVals = [0.3, 0.3, 0.9, 0.2]; // perfil de Ellie
+      for (let i = 0; i < 4; i++) {
+        const ix = centerX + radius * idealVals[i] * Math.cos(angles[i]);
+        const iy = centerY + radius * idealVals[i] * Math.sin(angles[i]);
+        if (i === 0) ctx.moveTo(ix, iy);
+        else ctx.lineTo(ix, iy);
+      }
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      ctx.setLineDash([]); // Reseta linha tracejada
+
+      // Polígono do Estado Atual
+      ctx.beginPath();
+      let fillColor = "rgba(99, 102, 241, 0.35)";
+      let strokeColor = "#818cf8";
+      if (score >= 70) {
+        fillColor = "rgba(16, 185, 129, 0.35)";
+        strokeColor = "#34d399";
+      } else if (v4 >= 8 && v1 >= 8) {
+        fillColor = "rgba(244, 63, 94, 0.35)";
+        strokeColor = "#fb7185";
+      } else if (score < 45) {
+        fillColor = "rgba(245, 158, 11, 0.35)";
+        strokeColor = "#fbbf24";
+      }
+
+      ctx.fillStyle = fillColor;
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = 2.5;
+
+      const points = [];
+      for (let i = 0; i < 4; i++) {
+        const px = centerX + radius * values[i] * Math.cos(angles[i]);
+        const py = centerY + radius * values[i] * Math.sin(angles[i]);
+        points.push({ x: px, y: py });
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Pontos nos Vértices
+      points.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+      });
+    }
+
+    // Copiar Relatório para Área de Transferência
+    function copyReport() {
+      const score = eutimiaVal.textContent;
+      const status = statusBadge.textContent;
+      const dist = distortionTitle.textContent;
+      const presc = prescTitle.textContent;
+
+      const reportText = `=== SÍNTESE DE REGULAÇÃO EMOCIONAL (UP - TCC) ===\n` +
+        `• Índice de Eutimia: ${score} (${status})\n` +
+        `• Dimensões: Cobrança=${s1.value}/10, Frustração=${s2.value}/10, Presença=${s3.value}/10, Rigidez=${s4.value}/10\n` +
+        `• Armadilha Mental TCC: ${dist}\n` +
+        `• Prescrição Recomendada: ${presc}\n` +
+        `Equipe 5 • 2º Semestre de Psicologia`;
+
+      // Clipboard compatível
+      const tempArea = document.createElement("textarea");
+      tempArea.value = reportText;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempArea);
+
+      showToast("Relatório copiado com sucesso para a área de transferência!");
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    // Iniciar na carga
+    window.addEventListener('load', () => {
+      updateMetrics();
+    });
+  </script>
+</body>
+</html>
