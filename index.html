@@ -12,9 +12,9 @@
 
   <style>
     :root {
-      --bg-dark: #090d16;
-      --bg-card: rgba(18, 25, 43, 0.75);
-      --bg-card-hover: rgba(26, 36, 62, 0.85);
+      --bg-dark: #070a12;
+      --bg-card: rgba(15, 23, 42, 0.78);
+      --bg-card-hover: rgba(30, 41, 59, 0.88);
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-glow: rgba(99, 102, 241, 0.25);
       
@@ -25,7 +25,6 @@
       --accent-rose: #f43f5e;
       --accent-purple: #a855f7;
       
-      /* Cores temáticas Up */
       --up-yellow: #fbbf24;
       --up-blue: #38bdf8;
       
@@ -55,51 +54,43 @@
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
-      /* Imagem de fundo com a casinha do Up nas nuvens e overlays graduados para contraste perfeito */
       background: 
-        linear-gradient(180deg, rgba(9, 13, 22, 0.88) 0%, rgba(9, 13, 22, 0.82) 40%, rgba(9, 13, 22, 0.94) 100%),
-        radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.2) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(7, 10, 18, 0.90) 0%, rgba(7, 10, 18, 0.84) 40%, rgba(7, 10, 18, 0.96) 100%),
+        radial-gradient(circle at 85% 15%, rgba(251, 191, 36, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 15% 85%, rgba(99, 102, 241, 0.15) 0%, transparent 55%),
         url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat fixed;
       position: relative;
     }
 
-    /* Ilustração flutuante da Casinha com Balões de Up como elemento de ambientação */
+    /* Ambientação suave dos balões */
     body::before {
       content: '';
       position: fixed;
-      top: 5%;
-      right: 4%;
-      width: clamp(160px, 20vw, 290px);
-      height: clamp(220px, 28vw, 380px);
+      top: 4%;
+      right: 3%;
+      width: clamp(150px, 18vw, 260px);
+      height: clamp(200px, 24vw, 340px);
       background: url('https://upload.wikimedia.org/wikipedia/en/0/05/Up_%282009_film%29.jpg') no-repeat center center;
       background-size: cover;
       border-radius: var(--radius-lg);
-      opacity: 0.12;
-      filter: drop-shadow(0 0 35px rgba(251, 191, 36, 0.3)) saturate(1.4);
+      opacity: 0.10;
+      filter: drop-shadow(0 0 35px rgba(251, 191, 36, 0.25)) saturate(1.3);
       pointer-events: none;
       z-index: 0;
-      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, transparent 75%);
-      animation: floatHouse 8s ease-in-out infinite alternate;
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 25%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 25%, transparent 75%);
+      animation: floatHouse 9s ease-in-out infinite alternate;
     }
 
     @keyframes floatHouse {
-      0% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-16px) rotate(1.5deg);
-      }
-      100% {
-        transform: translateY(-6px) rotate(-1deg);
-      }
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(1.2deg); }
+      100% { transform: translateY(-5px) rotate(-0.8deg); }
     }
 
-    /* Container Principal */
     .container {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
       padding: 1.5rem 1rem 3rem 1rem;
       display: flex;
@@ -107,17 +98,6 @@
       gap: 1.5rem;
       position: relative;
       z-index: 1;
-    }
-
-    /* Container Principal */
-    .container {
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 3rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
     }
 
     /* Cabeçalho */
@@ -128,7 +108,6 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 1.5rem;
-      position: relative;
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
 
@@ -166,7 +145,7 @@
 
     h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      font-size: clamp(1.4rem, 3.2vw, 2.3rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.2;
@@ -179,7 +158,7 @@
     .subtitle {
       color: var(--text-muted);
       font-size: 0.92rem;
-      max-width: 850px;
+      max-width: 900px;
     }
 
     /* Seletor de Arquétipos Rápidos */
@@ -200,11 +179,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .archetype-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 0.65rem;
     }
 
@@ -231,8 +212,8 @@
 
     .btn-archetype.active {
       border-color: var(--accent-indigo);
-      background: rgba(99, 102, 241, 0.15);
-      box-shadow: 0 0 15px -3px rgba(99, 102, 241, 0.3);
+      background: rgba(99, 102, 241, 0.16);
+      box-shadow: 0 0 15px -3px rgba(99, 102, 241, 0.35);
     }
 
     .btn-archetype .arch-name {
@@ -255,17 +236,16 @@
       gap: 1.5rem;
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 1024px) {
       .main-grid {
-        grid-template-columns: 1.15fr 0.85fr;
+        grid-template-columns: 1.25fr 0.95fr;
       }
     }
 
-    /* Card Genérico */
     .card {
       background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 1.5rem;
@@ -285,7 +265,7 @@
 
     .card-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #ffffff;
       display: flex;
@@ -293,62 +273,65 @@
       gap: 0.5rem;
     }
 
-    /* Sliders de Dimensão */
+    /* Lista das 6 Dimensões */
     .dimension-list {
       display: flex;
       flex-direction: column;
-      gap: 1.35rem;
+      gap: 1.15rem;
     }
 
     .dimension-item {
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.28);
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: var(--radius-md);
-      padding: 1.1rem;
-      transition: border-color 0.2s;
+      padding: 1rem 1.1rem;
+      transition: border-color 0.2s, transform 0.2s;
     }
 
     .dimension-item:focus-within,
     .dimension-item:hover {
-      border-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.14);
+      transform: translateX(2px);
     }
 
     .dim-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.35rem;
+      align-items: center;
+      margin-bottom: 0.3rem;
+      gap: 0.5rem;
     }
 
     .dim-title {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .dim-meta {
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 0.15rem 0.5rem;
+      padding: 0.15rem 0.55rem;
       border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08);
+      white-space: nowrap;
     }
 
     .dim-desc {
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       color: var(--text-muted);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
     }
 
-    /* Input Range Customizado */
     .slider-container {
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     input[type=range] {
@@ -395,13 +378,13 @@
       font-weight: 500;
     }
 
-    /* Painel Central de Eutimia & Radar */
+    /* Painel do Radar e Eutimia */
     .score-panel {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1.25rem;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.32);
       border-radius: var(--radius-md);
       padding: 1.25rem;
       border: 1px solid var(--border-subtle);
@@ -431,7 +414,7 @@
 
     .score-number {
       font-family: 'Outfit', sans-serif;
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 800;
       line-height: 1;
       letter-spacing: -0.04em;
@@ -453,10 +436,10 @@
       transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s;
     }
 
-    /* Canvas do Radar */
+    /* Radar Canvas */
     .radar-container {
       width: 100%;
-      max-width: 320px;
+      max-width: 350px;
       aspect-ratio: 1 / 1;
       position: relative;
       margin: 0 auto;
@@ -468,7 +451,7 @@
       display: block;
     }
 
-    /* Painel Diagnóstico e Prescrição TCC */
+    /* Painel da TCC */
     .tcc-container {
       display: flex;
       flex-direction: column;
@@ -497,7 +480,7 @@
     }
 
     .tcc-box-title {
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       font-weight: 700;
       color: #ffffff;
     }
@@ -541,7 +524,6 @@
       padding-left: 1.1rem;
     }
 
-    /* Ações e Botões de Engajamento */
     .actions-bar {
       display: flex;
       flex-wrap: wrap;
@@ -551,7 +533,7 @@
 
     .btn {
       flex: 1;
-      min-width: 150px;
+      min-width: 140px;
       padding: 0.75rem 1rem;
       border-radius: var(--radius-md);
       font-family: inherit;
@@ -588,7 +570,7 @@
       border-color: rgba(255, 255, 255, 0.2);
     }
 
-    /* Toast de Notificação */
+    /* Toast */
     .toast {
       position: fixed;
       bottom: 2rem;
@@ -637,32 +619,32 @@
       </div>
       <h1>Termômetro de Eutimia & Flexibilidade Cognitiva</h1>
       <p class="subtitle">
-        Aplicação interativa para autoavaliação e regulação emocional na vida adulta (28 a 42 anos). Avalie os eixos do modelo cognitivo de Beck através das metáforas de Carl, Ellie e Russell.
+        Instrumento avaliativo e psicoeducativo para a vida adulta (28 a 42 anos). Avalie os eixos do modelo cognitivo de Beck a partir das 6 metáforas do filme *Up* e obtenha a prescrição de regulação emocional em tempo real.
       </p>
     </header>
 
-    <!-- SELETOR RÁPIDO DE ARQUÉTIPOS (DEMONSTRAÇÃO NA AULA) -->
+    <!-- PRESETS RÁPIDOS PARA A DINÂMICA COM A SALA -->
     <section class="archetype-section">
       <div class="archetype-label">
-        <span>Arquétipos Pré-definidos para Apresentação</span>
-        <span>Clique para carregar no telão</span>
+        <span>Arquétipos Pré-definidos para a Apresentação</span>
+        <span>Carregue na tela ao vivo para contrastar com a turma</span>
       </div>
       <div class="archetype-grid">
         <button class="btn-archetype active" id="btnArchCarl" onclick="loadArchetype('carl')">
-          <span class="arch-name">🎈 Carl Fredricksen</span>
-          <span class="arch-desc">Sobrecarga, luto e rigidez "tudo ou nada"</span>
-        </button>
-        <button class="btn-archetype" id="btnArchMuntz" onclick="loadArchetype('muntz')">
-          <span class="arch-name">⚔️ Charles Muntz</span>
-          <span class="arch-desc">Obsessão cega por provar valor externo</span>
-        </button>
-        <button class="btn-archetype" id="btnArchRussell" onclick="loadArchetype('russell')">
-          <span class="arch-name">🍫 Russell</span>
-          <span class="arch-desc">Presença plena e afeto sem cobrança</span>
+          <span class="arch-name">🎈 Carl em Crise</span>
+          <span class="arch-desc">Sobrecarga, culpa e rigidez "tudo ou nada"</span>
         </button>
         <button class="btn-archetype" id="btnArchEllie" onclick="loadArchetype('ellie')">
           <span class="arch-name">📖 Ellie (Eutimia)</span>
-          <span class="arch-desc">Equilíbrio, ressignificação e processo</span>
+          <span class="arch-desc">Ressignificação e saboreio do cotidiano</span>
+        </button>
+        <button class="btn-archetype" id="btnArchRussell" onclick="loadArchetype('russell')">
+          <span class="arch-name">🍦 Russell no Presente</span>
+          <span class="arch-desc">Mindfulness espontâneo e carência de rumo</span>
+        </button>
+        <button class="btn-archetype" id="btnArchMuntz" onclick="loadArchetype('muntz')">
+          <span class="arch-name">⚔️ Muntz Obcecado</span>
+          <span class="arch-desc">Fixação por validação e autossabotagem</span>
         </button>
       </div>
     </section>
@@ -670,14 +652,14 @@
     <!-- GRID PRINCIPAL -->
     <div class="main-grid">
       
-      <!-- COLUNA 1: SLIDERS DAS 4 DIMENSÕES PSICOLÓGICAS -->
+      <!-- COLUNA 1: 6 SLIDERS DE TCC / UP -->
       <section class="card">
         <div class="card-title-box">
           <h2 class="card-title">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
-            Dimensões Cognitivas & Comportamentais
+            As 6 Dimensões Psicoemocionais (TCC)
           </h2>
-          <span style="font-size: 0.75rem; color: var(--text-dim);">Escala de 1 a 10</span>
+          <span style="font-size: 0.75rem; color: var(--text-dim);">1 = Leve / 10 = Máximo</span>
         </div>
 
         <div class="dimension-list">
@@ -685,26 +667,26 @@
           <!-- D1: Autocobrança / Casa de Carl -->
           <div class="dimension-item">
             <div class="dim-header">
-              <span class="dim-title">🏠 1. Peso da Autocobrança ("A Casa de Carl")</span>
+              <span class="dim-title">🏠 1. O Peso da Casa (Autocobrança & "Deveria")</span>
               <span class="dim-meta" id="valD1Badge">8 / 10</span>
             </div>
-            <p class="dim-desc">Quanto você sente que "já deveria estar muito mais longe" e carrega culpas do passado como um peso físico?</p>
+            <p class="dim-desc">Quanto você sente que "já deveria estar muito mais longe na vida" e carrega culpas do passado como um peso físico?</p>
             <div class="slider-container">
               <input type="range" id="sliderD1" min="1" max="10" value="8" oninput="updateMetrics()">
               <div class="slider-labels">
                 <span>Leveza / Autoaceitação</span>
-                <span>Sobrecarga Extrema</span>
+                <span>Sobrecarga Implacável</span>
               </div>
             </div>
           </div>
 
-          <!-- D2: Frustração / Jarra Quebrada -->
+          <!-- D2: Tolerância à Frustração / Jarra Quebrada -->
           <div class="dimension-item">
             <div class="dim-header">
-              <span class="dim-title">🏺 2. Reação ao Imprevisto ("A Jarra Quebrada")</span>
+              <span class="dim-title">🏺 2. A Jarra Quebrada (Reação aos Imprevistos)</span>
               <span class="dim-meta" id="valD2Badge">8 / 10</span>
             </div>
-            <p class="dim-desc">Quando um boleto ou imprevisto adia seus planos: qual o nível de revolta ou sensação de que "nada dá certo"?</p>
+            <p class="dim-desc">Quando boletos ou imprevistos adiam um plano de meses: nível de revolta ou sensação de que "nada dá certo para mim"?</p>
             <div class="slider-container">
               <input type="range" id="sliderD2" min="1" max="10" value="8" oninput="updateMetrics()">
               <div class="slider-labels">
@@ -714,34 +696,66 @@
             </div>
           </div>
 
-          <!-- D3: Presença / Sorvete de Russell -->
+          <!-- D3: Reestruturação Cognitiva / Álbum de Ellie -->
           <div class="dimension-item">
             <div class="dim-header">
-              <span class="dim-title">🍦 3. Presença & Saboreio Cotidiano ("O Sorvete")</span>
+              <span class="dim-title">📖 3. O Álbum de Ellie (Ressignificar o Cotidiano)</span>
               <span class="dim-meta" id="valD3Badge">3 / 10</span>
             </div>
-            <p class="dim-desc">Capacidade de saborear conversas simples, pausas e pequenas conexões reais sem se culpar por não estar produzindo.</p>
+            <p class="dim-desc">Capacidade de reconhecer que a vida já está acontecendo nas rotinas simples, mesmo sem grandes marcos heroicos.</p>
             <div class="slider-container">
               <input type="range" id="sliderD3" min="1" max="10" value="3" oninput="updateMetrics()">
               <div class="slider-labels">
-                <span>Anedonia / Desconexão</span>
+                <span>Filtro mental negativo</span>
+                <span>Reestruturação & Gratidão</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- D4: Mindfulness / O Sorvete de Russell -->
+          <div class="dimension-item">
+            <div class="dim-header">
+              <span class="dim-title">🍦 4. O Sorvete na Calçada (Presença & Vínculo)</span>
+              <span class="dim-meta" id="valD4Badge">4 / 10</span>
+            </div>
+            <p class="dim-desc">Conseguir saborear um café, uma conversa espontânea ou um momento de descanso sem se culpar por não estar produzindo.</p>
+            <div class="slider-container">
+              <input type="range" id="sliderD4" min="1" max="10" value="4" oninput="updateMetrics()">
+              <div class="slider-labels">
+                <span>Anedonia / Piloto automático</span>
                 <span>Presença Plena no Hoje</span>
               </div>
             </div>
           </div>
 
-          <!-- D4: Rigidez / Obsessão de Muntz -->
+          <!-- D5: Obsessão de Muntz / Busca por Validação -->
           <div class="dimension-item">
             <div class="dim-header">
-              <span class="dim-title">🧭 4. Rigidez de Metas ("A Obsessão de Muntz")</span>
-              <span class="dim-meta" id="valD4Badge">7 / 10</span>
+              <span class="dim-title">🧭 5. A Obsessão de Muntz (Validação & Status)</span>
+              <span class="dim-meta" id="valD5Badge">7 / 10</span>
             </div>
-            <p class="dim-desc">Insistência cega em metas que estão custando sua saúde mental ou afastando as pessoas que você ama.</p>
+            <p class="dim-desc">Necessidade de provar sucesso para os outros (redes sociais, família), subordinando a própria paz ao aplauso alheio.</p>
             <div class="slider-container">
-              <input type="range" id="sliderD4" min="1" max="10" value="7" oninput="updateMetrics()">
+              <input type="range" id="sliderD5" min="1" max="10" value="7" oninput="updateMetrics()">
               <div class="slider-labels">
-                <span>Flexibilidade de rota</span>
-                <span>Fanatismo por validação</span>
+                <span>Autonomia de valor</span>
+                <span>Dependência de aplausos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- D6: Desapego / Esvaziar a Mobília -->
+          <div class="dimension-item">
+            <div class="dim-header">
+              <span class="dim-title">🛋️ 6. Esvaziar a Mobília (Capacidade de Desapego)</span>
+              <span class="dim-meta" id="valD6Badge">3 / 10</span>
+            </div>
+            <p class="dim-desc">Habilidade de abrir mão de cobranças antigas, papéis desgastados e objetos que pesam para permitir novos voos.</p>
+            <div class="slider-container">
+              <input type="range" id="sliderD6" min="1" max="10" value="3" oninput="updateMetrics()">
+              <div class="slider-labels">
+                <span>Apego rígido e estagnação</span>
+                <span>Desapego & Flexibilidade</span>
               </div>
             </div>
           </div>
@@ -749,40 +763,40 @@
         </div>
       </section>
 
-      <!-- COLUNA 2: RADAR CANVAS + RESULTADO DE EUTIMIA -->
+      <!-- COLUNA 2: RADAR CANVAS DE 6 EIXOS + EUTIMIA + PRESCRIÇÃO -->
       <section class="card">
         <div class="card-title-box">
           <h2 class="card-title">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Estado Atual & Balanço de Eutimia
+            Balanço de Eutimia & Teia Cognitiva
           </h2>
-          <span style="font-size: 0.75rem; color: var(--text-dim);">Tempo Real</span>
+          <span style="font-size: 0.75rem; color: var(--text-dim);">6 Eixos</span>
         </div>
 
         <div class="score-panel">
           <div class="eutimia-header">
-            <span class="score-badge" id="statusBadge">Analisando...</span>
-            <div class="score-number" id="eutimiaValue">32%</div>
-            <span style="font-size: 0.78rem; color: var(--text-muted);">Índice Geral de Eutimia e Flexibilidade</span>
+            <span class="score-badge" id="statusBadge">Calculando...</span>
+            <div class="score-number" id="eutimiaValue">34%</div>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">Índice Geral de Flexibilidade Psicológica</span>
             
             <div class="score-bar-bg">
               <div class="score-bar-fill" id="statusBarFill"></div>
             </div>
           </div>
 
-          <!-- Canvas Gráfico Radar Interativo -->
+          <!-- Canvas Gráfico Radar de 6 Pontas -->
           <div class="radar-container">
-            <canvas id="radarCanvas" width="300" height="300"></canvas>
+            <canvas id="radarCanvas" width="350" height="350"></canvas>
           </div>
         </div>
 
-        <!-- PAINEL DA TCC (TRÍADE + ARMADILHA + PRESCRIÇÃO) -->
+        <!-- PAINEL DA TCC (TRÍADE + DISTORÇÃO + PRESCRIÇÃO) -->
         <div class="tcc-container">
           
           <div class="tcc-box">
             <span class="tcc-box-tag">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2v20"/></svg>
-              Tríade Cognitiva da TCC
+              Tríade Cognitiva Ativa (Modelo de Beck)
             </span>
             <div class="tcc-triad">
               <div class="triad-col">
@@ -791,18 +805,18 @@
               </div>
               <div class="triad-col">
                 <strong>Pensamento Automático</strong>
-                <span id="triadThought">"Se não for do meu jeito, falhei completamente."</span>
+                <span id="triadThought">"Se não for do jeito perfeito, falhei completamente."</span>
               </div>
               <div class="triad-col">
                 <strong>Reação Emocional</strong>
-                <span id="triadEmotion">Amargura, frustração e isolamento social.</span>
+                <span id="triadEmotion">Amargura, frustração existencial e isolamento.</span>
               </div>
             </div>
           </div>
 
           <div class="tcc-box">
-            <span class="tcc-box-tag">Armadilha Mental Dominante (Distorção)</span>
-            <div class="tcc-box-title" id="distortionTitle">Pensamento Tudo ou Nada (Polarizado)</div>
+            <span class="tcc-box-tag">Armadilha Mental Dominante (Distorção Cognitiva)</span>
+            <div class="tcc-box-title" id="distortionTitle">Pensamento Polarizado ("Tudo ou Nada")</div>
             <p style="font-size: 0.8rem; color: var(--text-muted);" id="distortionDesc">
               A crença de que qualquer desvio da meta perfeita anula todo o esforço e amor construídos até aqui.
             </p>
@@ -812,9 +826,9 @@
             <span class="tcc-box-tag" style="color: #6ee7b7;">Prescrição de Regulação Emocional (TCC)</span>
             <div class="tcc-box-title" id="prescTitle">Técnica: Esvaziar a Mobília da Casa</div>
             <ol class="prescription-steps" id="prescSteps">
-              <li>Identifique 1 cobrança externa que não depende 100% de você.</li>
-              <li>Pratique o teste de evidências de Ellie: "O que de bom aconteceu enquanto o plano mudava?".</li>
-              <li>Ativação comportamental: 15 minutos saboreando uma pausa real hoje.</li>
+              <li>Identifique 1 cobrança rígida que você herdou e pode descartar hoje.</li>
+              <li>Pratique o teste de realidade de Ellie: "O que de bom aconteceu enquanto o plano mudava?".</li>
+              <li>Ativação comportamental: 15 minutos saboreando uma pausa real com quem importa.</li>
             </ol>
           </div>
 
@@ -848,17 +862,21 @@
   </div>
 
   <script>
-    // Elementos dos Sliders
+    // Sliders
     const s1 = document.getElementById('sliderD1');
     const s2 = document.getElementById('sliderD2');
     const s3 = document.getElementById('sliderD3');
     const s4 = document.getElementById('sliderD4');
+    const s5 = document.getElementById('sliderD5');
+    const s6 = document.getElementById('sliderD6');
 
-    // Badges de Valores
+    // Badges Numéricos
     const b1 = document.getElementById('valD1Badge');
     const b2 = document.getElementById('valD2Badge');
     const b3 = document.getElementById('valD3Badge');
     const b4 = document.getElementById('valD4Badge');
+    const b5 = document.getElementById('valD5Badge');
+    const b6 = document.getElementById('valD6Badge');
 
     // Elementos de Diagnóstico
     const eutimiaVal = document.getElementById('eutimiaValue');
@@ -878,12 +896,12 @@
     const canvas = document.getElementById('radarCanvas');
     const ctx = canvas.getContext('2d');
 
-    // Perfis Pré-configurados
+    // Presets dos 4 Arquétipos Principais (com 6 eixos)
     const archetypes = {
-      carl: { d1: 9, d2: 8, d3: 2, d4: 8, name: "Carl Fredricksen" },
-      muntz: { d1: 10, d2: 9, d3: 1, d4: 10, name: "Charles Muntz" },
-      russell: { d1: 2, d2: 3, d3: 10, d4: 3, name: "Russell" },
-      ellie: { d1: 3, d2: 3, d3: 9, d4: 2, name: "Ellie Fredricksen" }
+      carl: { d1: 9, d2: 8, d3: 2, d4: 3, d5: 7, d6: 2, name: "Carl em Crise" },
+      ellie: { d1: 3, d2: 3, d3: 9, d4: 9, d5: 2, d6: 9, name: "Ellie Equilibrada" },
+      russell: { d1: 2, d2: 4, d3: 6, d4: 10, d5: 2, d6: 7, name: "Russell no Presente" },
+      muntz: { d1: 10, d2: 9, d3: 1, d4: 1, d5: 10, d6: 1, name: "Muntz Obcecado" }
     };
 
     function loadArchetype(key) {
@@ -894,12 +912,14 @@
       s2.value = arch.d2;
       s3.value = arch.d3;
       s4.value = arch.d4;
+      s5.value = arch.d5;
+      s6.value = arch.d6;
 
       document.querySelectorAll('.btn-archetype').forEach(b => b.classList.remove('active'));
       if (key === 'carl') document.getElementById('btnArchCarl').classList.add('active');
-      if (key === 'muntz') document.getElementById('btnArchMuntz').classList.add('active');
-      if (key === 'russell') document.getElementById('btnArchRussell').classList.add('active');
       if (key === 'ellie') document.getElementById('btnArchEllie').classList.add('active');
+      if (key === 'russell') document.getElementById('btnArchRussell').classList.add('active');
+      if (key === 'muntz') document.getElementById('btnArchMuntz').classList.add('active');
 
       updateMetrics();
       showToast(`Arquétipo carregado: ${arch.name}`);
@@ -910,66 +930,68 @@
       s2.value = 5;
       s3.value = 5;
       s4.value = 5;
+      s5.value = 5;
+      s6.value = 5;
       document.querySelectorAll('.btn-archetype').forEach(b => b.classList.remove('active'));
       updateMetrics();
       showToast("Sliders resetados para a média neutra.");
     }
 
-    // Cálculo e Atualização
     function updateMetrics() {
-      const v1 = parseInt(s1.value, 10);
-      const v2 = parseInt(s2.value, 10);
-      const v3 = parseInt(s3.value, 10);
-      const v4 = parseInt(s4.value, 10);
+      const v1 = parseInt(s1.value, 10); // Cobrança (-)
+      const v2 = parseInt(s2.value, 10); // Frustração (-)
+      const v3 = parseInt(s3.value, 10); // Álbum Ellie (+)
+      const v4 = parseInt(s4.value, 10); // Sorvete Russell (+)
+      const v5 = parseInt(s5.value, 10); // Obsessão Muntz (-)
+      const v6 = parseInt(s6.value, 10); // Desapego Mobília (+)
 
-      // Atualiza Badges numéricos
+      // Atualiza os badges
       b1.textContent = `${v1} / 10`;
       b2.textContent = `${v2} / 10`;
       b3.textContent = `${v3} / 10`;
       b4.textContent = `${v4} / 10`;
+      b5.textContent = `${v5} / 10`;
+      b6.textContent = `${v6} / 10`;
 
-      // Fórmula de Eutimia:
-      // Presença conta positivo (peso alto)
-      // Cobrança, Frustração desadaptativa e Rigidez penalizam a estabilidade
-      const negativeLoad = ((v1 - 1) + (v2 - 1) + (v4 - 1)) / 27; // 0 a 1
-      const positivePresence = (v3 - 1) / 9; // 0 a 1
+      // Cálculo de Eutimia e Flexibilidade:
+      // Fatores de Carga Disfuncional (v1, v2, v5)
+      const negativeLoad = ((v1 - 1) + (v2 - 1) + (v5 - 1)) / 27; // 0 a 1
+      // Fatores de Recursos Adaptativos (v3, v4, v6)
+      const positiveResources = ((v3 - 1) + (v4 - 1) + (v6 - 1)) / 27; // 0 a 1
 
-      let score = Math.round(((1 - negativeLoad) * 0.65 + positivePresence * 0.35) * 100);
+      let score = Math.round(((1 - negativeLoad) * 0.55 + positiveResources * 0.45) * 100);
       score = Math.max(5, Math.min(98, score));
 
       eutimiaVal.textContent = `${score}%`;
       statusBarFill.style.width = `${score}%`;
 
-      // Define Estado Psicológico e Diagnósticos de TCC
-      applyTccDiagnosis(score, v1, v2, v3, v4);
-
-      // Desenha o Radar Canvas
-      drawRadar(v1, v2, v3, v4, score);
+      applyTccDiagnosis(score, v1, v2, v3, v4, v5, v6);
+      drawRadar(v1, v2, v3, v4, v5, v6, score);
     }
 
-    function applyTccDiagnosis(score, v1, v2, v3, v4) {
+    function applyTccDiagnosis(score, v1, v2, v3, v4, v5, v6) {
       if (score >= 70) {
-        // EUTIMIA PLENA (Ellie)
+        // EUTIMIA PLENA & FLEXIBILIDADE (Ellie)
         statusBadge.textContent = "Eutimia Plena & Flexibilidade";
         statusBadge.style.background = "rgba(16, 185, 129, 0.15)";
         statusBadge.style.color = "#6ee7b7";
         statusBadge.style.borderColor = "rgba(16, 185, 129, 0.4)";
         statusBarFill.style.backgroundColor = "#10b981";
 
-        triadSituation.textContent = "Planos alterados por imprevistos normais do cotidiano.";
-        triadThought.textContent = "'A vida acontece no caminho. O que vivemos juntos tem valor real.'";
-        triadEmotion.textContent = "Paz, serenidade, gratidão e flexibilidade comportamental.";
+        triadSituation.textContent = "Planos alterados por imprevistos normais da vida adulta.";
+        triadThought.textContent = "'A vida acontece no caminho. O que construímos juntos tem valor real.'";
+        triadEmotion.textContent = "Paz, contentamento, gratidão e flexibilidade de rota.";
 
-        distortionTitle.textContent = "Pensamento Funcional & Adaptativo";
-        distortionDesc.textContent = "Capacidade de reenquadrar a realidade (Reestruturação Cognitiva). O indivíduo valoriza os afetos e o processo, não apenas a meta grandiosa.";
+        distortionTitle.textContent = "Pensamento Funcional & Reestruturação Ativa";
+        distortionDesc.textContent = "Excelente tolerância à frustração. O indivíduo valoriza o processo e os afetos cotidianos, sem subordinar sua identidade a uma meta heróica inalcançável.";
 
         prescTitle.textContent = "Manutenção: O Livro das Próximas Aventuras";
         prescSteps.innerHTML = `
-          <li>Manter o registro semanal de pequenos momentos significativos com pessoas queridas.</li>
-          <li>Compartilhar essa estabilidade com pessoas próximas que estejam sobrecarregadas.</li>
-          <li>Planejar novos passos sem perder o saboreio do presente.</li>
+          <li>Manter o registro semanal de pequenos momentos afetivos com pessoas queridas.</li>
+          <li>Servir de ponto de acolhimento para amigos ou familiares presos na rigidez.</li>
+          <li>Seguir traçando metas sem abrir mão do saboreio do presente.</li>
         `;
-      } else if (v4 >= 8 && v1 >= 8) {
+      } else if (v5 >= 8 && v1 >= 7) {
         // PERFIL MUNTZ (Obsessão por validação e rigidez extrema)
         statusBadge.textContent = "Disforia Obsessiva (Padrão Muntz)";
         statusBadge.style.background = "rgba(244, 63, 94, 0.15)";
@@ -977,39 +999,39 @@
         statusBadge.style.borderColor = "rgba(244, 63, 94, 0.4)";
         statusBarFill.style.backgroundColor = "#f43f5e";
 
-        triadSituation.textContent = "Cobrança profissional extrema e necessidade de provar valor.";
-        triadThought.textContent = "'Preciso ser o melhor a qualquer custo, senão minha vida foi um erro.'";
-        triadEmotion.textContent = "Hostilidade, paranoia defensiva e isolamento afetivo crônico.";
+        triadSituation.textContent = "Exposição social, comparação de conquistas e cobrança por status.";
+        triadThought.textContent = "'Tenho que ser grandioso a qualquer custo, senão serei esquecido e rejeitado.'";
+        triadEmotion.textContent = "Hostilidade, medo paralisante do fracasso e isolamento afetivo.";
 
-        distortionTitle.textContent = "Imperativos Rígidos ('Eu Deveria') e Catastrofização";
-        distortionDesc.textContent = "A pessoa subordina todo o seu afeto e saúde a uma validação pública ou profissional que nunca traz saciedade duradoura.";
+        distortionTitle.textContent = "Imperativos Rígidos ('Eu Deveria') & Catastrofização";
+        distortionDesc.textContent = "Fixação absoluta em provar valor para o mundo externo, sacrificando sono, saúde física e relações genuínas.";
 
-        prescTitle.textContent = "Intervenção: Auditoria de Danos & Quebra de Rigidez";
+        prescTitle.textContent = "Intervenção: Auditoria de Danos & Limites";
         prescSteps.innerHTML = `
-          <li>Listar o que essa obsessão já custou: sono, relacionamentos e saúde mental.</li>
-          <li>Estabelecer 'limites inegociáveis de descanso' protegidos no calendário.</li>
-          <li>Trabalhar na TCC a crença de desamor: 'Meu valor não depende de aplausos eternos'.</li>
+          <li>Calcular o custo real dessa busca: quanto tempo com quem você ama já foi perdido?</li>
+          <li>Estabelecer pausas inegociáveis sem celular ou trabalho após certo horário.</li>
+          <li>Desafiar a crença central: 'Eu tenho valor humano antes mesmo de qualquer entrega'.</li>
         `;
-      } else if (score < 45 && v3 <= 4) {
-        // PERFIL CARL (Sobrecarga, culpa e anedonia)
-        statusBadge.textContent = "Hipotimia Rígida (Padrão Carl Fredricksen)";
+      } else if (score < 45 && v6 <= 4) {
+        // PERFIL CARL (Sobrecarga, culpa e dificuldade de desapego)
+        statusBadge.textContent = "Hipotimia Rígida (Padrão Carl)";
         statusBadge.style.background = "rgba(245, 158, 11, 0.15)";
         statusBadge.style.color = "#fcd34d";
         statusBadge.style.borderColor = "rgba(245, 158, 11, 0.4)";
         statusBarFill.style.backgroundColor = "#f59e0b";
 
-        triadSituation.textContent = "A jarra de economias quebrou; imprevistos adiam a meta.";
-        triadThought.textContent = "'Eu estraguei tudo. Eu deveria ter alcançado muito mais nessa idade.'";
-        triadEmotion.textContent = "Amargura, frustração com a rotina e isolamento social.";
+        triadSituation.textContent = "A jarra quebrou; imprevistos atrasam a grande meta da juventude.";
+        triadThought.textContent = "'Eu estraguei tudo. Minha vida não valeu a pena porque nunca cheguei lá.'";
+        triadEmotion.textContent = "Amargura, luto cristalizado, culpa e apatia defensiva.";
 
         distortionTitle.textContent = "Pensamento Tudo ou Nada & Filtro Negativo";
-        distortionDesc.textContent = "Focar exclusivamente no destino não alcançado, desqualificando 50 anos de convivência afetuosa e pequenas vitórias diárias.";
+        distortionDesc.textContent = "Desqualificar anos de convivência e pequenas vitórias porque um objetivo específico precisou ser cancelado ou adiado.";
 
         prescTitle.textContent = "Técnica: Esvaziar a Mobília da Casa";
         prescSteps.innerHTML = `
-          <li>Identificar duas cobranças pesadas que você herdou e pode 'jogar pela janela'.</li>
-          <li>Exame de Evidências: 'O atraso dessa meta realmente anula quem eu sou?'.</li>
-          <li>Ativação comportamental: 1 conversa leve de 20 minutos com alguém querido sem falar de trabalho.</li>
+          <li>Identificar duas cobranças pesadas que você herdou e escolher conscientemente desapegar delas.</li>
+          <li>Fazer o Exame de Evidências: 'O atraso desse plano anula o meu esforço até aqui?'.</li>
+          <li>Ativação comportamental: 1 almoço ou conversa com alguém querido sem tocar em cobranças de futuro.</li>
         `;
       } else {
         // PERFIL RUSSELL (Espontâneo / Disperso)
@@ -1019,24 +1041,24 @@
         statusBadge.style.borderColor = "rgba(6, 182, 212, 0.4)";
         statusBarFill.style.backgroundColor = "#06b6d4";
 
-        triadSituation.textContent = "Cotidiano leve, porém com carência afetiva ou falta de direção.";
-        triadThought.textContent = "'Gosto de estar aqui, mas às vezes me sinto sozinho ou sem rumo.'";
-        triadEmotion.textContent = "Curiosidade, afeto genuíno e busca por figuras de referência.";
+        triadSituation.textContent = "Rotina comum sem grandes cobranças, mas com carência de direção.";
+        triadThought.textContent = "'Gosto de estar aqui, mas às vezes me perco ou sinto que falta um rumo.'";
+        triadEmotion.textContent = "Curiosidade espontânea, carinho e busca por pertencimento.";
 
         distortionTitle.textContent = "Atenção Plena Espontânea (Mindfulness Natural)";
-        distortionDesc.textContent = "Capacidade exemplar de saborear o 'sorvete na calçada', necessitando apenas de suporte para estruturar metas funcionais de longo prazo.";
+        distortionDesc.textContent = "Capacidade exemplar de saborear o 'sorvete na calçada', necessitando apenas de suporte para organizar metas práticas de vida adulta.";
 
-        prescTitle.textContent = "Fortalecimento: Estruturação com Afeto";
+        prescTitle.textContent = "Fortalecimento: Estrutura sem Rigidez";
         prescSteps.innerHTML = `
-          <li>Canalizar a energia espontânea para 1 meta realista por vez.</li>
-          <li>Fortalecer laços com mentores e amigos maduros de confiança.</li>
-          <li>Celebrar as microvitórias com a 'insígnia da tampinha de guaraná'.</li>
+          <li>Escolher 1 objetivo concreto por vez e dividi-lo em pequenas etapas simples.</li>
+          <li>Celebrar as microconquistas com a 'insígnia da tampinha de guaraná'.</li>
+          <li>Aproveitar a habilidade natural de se conectar com as pessoas para criar redes de apoio.</li>
         `;
       }
     }
 
-    // Renderização do Canvas Radar
-    function drawRadar(v1, v2, v3, v4, score) {
+    // Desenha o Radar de 6 Eixos
+    function drawRadar(v1, v2, v3, v4, v5, v6, score) {
       const w = canvas.width;
       const h = canvas.height;
       const centerX = w / 2;
@@ -1045,29 +1067,39 @@
 
       ctx.clearRect(0, 0, w, h);
 
-      // Eixos e Nomes
+      // 6 Rótulos e Ângulos (60 graus cada)
       const labels = [
         "1. Cobrança",
         "2. Frustração",
-        "3. Presença",
-        "4. Rigidez"
+        "3. Álbum Ellie",
+        "4. Presença",
+        "5. Obsessão",
+        "6. Desapego"
       ];
-      const values = [v1 / 10, v2 / 10, v3 / 10, v4 / 10];
-      const angles = [
-        -Math.PI / 2,         // Topo: Cobrança
-        0,                    // Direita: Frustração
-        Math.PI / 2,          // Fundo: Presença
-        Math.PI               // Esquerda: Rigidez
+      
+      const values = [
+        v1 / 10,
+        v2 / 10,
+        v3 / 10,
+        v4 / 10,
+        v5 / 10,
+        v6 / 10
       ];
 
-      // Desenhar Teias Concéntricas
+      const angles = [];
+      for (let i = 0; i < 6; i++) {
+        // Começa no topo (-PI/2) e avança 60 graus (PI/3)
+        angles.push(-Math.PI / 2 + (i * Math.PI / 3));
+      }
+
+      // Teias Concéntricas (4 níveis)
       ctx.lineWidth = 1;
       const levels = 4;
       for (let l = 1; l <= levels; l++) {
         const r = (radius / levels) * l;
         ctx.beginPath();
         ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 6; i++) {
           const x = centerX + r * Math.cos(angles[i]);
           const y = centerY + r * Math.sin(angles[i]);
           if (i === 0) ctx.moveTo(x, y);
@@ -1077,10 +1109,10 @@
         ctx.stroke();
       }
 
-      // Desenhar Eixos Radiais
-      for (let i = 0; i < 4; i++) {
+      // Eixos Radiais e Texto
+      for (let i = 0; i < 6; i++) {
         ctx.beginPath();
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.14)";
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(centerX + radius * Math.cos(angles[i]), centerY + radius * Math.sin(angles[i]));
         ctx.stroke();
@@ -1096,13 +1128,13 @@
         ctx.fillText(labels[i], lx, ly);
       }
 
-      // Zona de Eutimia Ideal (Área verde de referência)
+      // Zona de Eutimia Ideal (Perfil de Ellie como referência verde)
       ctx.beginPath();
       ctx.fillStyle = "rgba(16, 185, 129, 0.08)";
-      ctx.strokeStyle = "rgba(16, 185, 129, 0.3)";
+      ctx.strokeStyle = "rgba(16, 185, 129, 0.35)";
       ctx.setLineDash([3, 3]);
-      const idealVals = [0.3, 0.3, 0.9, 0.2]; // perfil de Ellie
-      for (let i = 0; i < 4; i++) {
+      const idealVals = [0.3, 0.3, 0.9, 0.9, 0.2, 0.9];
+      for (let i = 0; i < 6; i++) {
         const ix = centerX + radius * idealVals[i] * Math.cos(angles[i]);
         const iy = centerY + radius * idealVals[i] * Math.sin(angles[i]);
         if (i === 0) ctx.moveTo(ix, iy);
@@ -1111,16 +1143,16 @@
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
-      ctx.setLineDash([]); // Reseta linha tracejada
+      ctx.setLineDash([]);
 
-      // Polígono do Estado Atual
+      // Polígono do Usuário
       ctx.beginPath();
       let fillColor = "rgba(99, 102, 241, 0.35)";
       let strokeColor = "#818cf8";
       if (score >= 70) {
         fillColor = "rgba(16, 185, 129, 0.35)";
         strokeColor = "#34d399";
-      } else if (v4 >= 8 && v1 >= 8) {
+      } else if (v5 >= 8 && v1 >= 7) {
         fillColor = "rgba(244, 63, 94, 0.35)";
         strokeColor = "#fb7185";
       } else if (score < 45) {
@@ -1133,7 +1165,7 @@
       ctx.lineWidth = 2.5;
 
       const points = [];
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 6; i++) {
         const px = centerX + radius * values[i] * Math.cos(angles[i]);
         const py = centerY + radius * values[i] * Math.sin(angles[i]);
         points.push({ x: px, y: py });
@@ -1144,7 +1176,7 @@
       ctx.fill();
       ctx.stroke();
 
-      // Pontos nos Vértices
+      // Vértices luminosos
       points.forEach(p => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
@@ -1153,7 +1185,7 @@
       });
     }
 
-    // Copiar Relatório para Área de Transferência
+    // Copiar Síntese da Apresentação
     function copyReport() {
       const score = eutimiaVal.textContent;
       const status = statusBadge.textContent;
@@ -1162,12 +1194,17 @@
 
       const reportText = `=== SÍNTESE DE REGULAÇÃO EMOCIONAL (UP - TCC) ===\n` +
         `• Índice de Eutimia: ${score} (${status})\n` +
-        `• Dimensões: Cobrança=${s1.value}/10, Frustração=${s2.value}/10, Presença=${s3.value}/10, Rigidez=${s4.value}/10\n` +
+        `• Dimensões:\n` +
+        `  1. Cobrança ("Casa"): ${s1.value}/10\n` +
+        `  2. Frustração ("Jarra"): ${s2.value}/10\n` +
+        `  3. Álbum de Ellie: ${s3.value}/10\n` +
+        `  4. Presença ("Sorvete"): ${s4.value}/10\n` +
+        `  5. Obsessão ("Muntz"): ${s5.value}/10\n` +
+        `  6. Desapego ("Mobília"): ${s6.value}/10\n` +
         `• Armadilha Mental TCC: ${dist}\n` +
         `• Prescrição Recomendada: ${presc}\n` +
         `Equipe 5 • 2º Semestre de Psicologia`;
 
-      // Clipboard compatível
       const tempArea = document.createElement("textarea");
       tempArea.value = reportText;
       document.body.appendChild(tempArea);
@@ -1188,7 +1225,6 @@
       }, 3200);
     }
 
-    // Iniciar na carga
     window.addEventListener('load', () => {
       updateMetrics();
     });
