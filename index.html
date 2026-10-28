@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Termômetro de Eutimia & Flexibilidade Cognitiva - Up - Altas Aventuras</title>
+  <title>Termômetro de Eutimia & Flexibilidade Cognitiva - Up (TCC)</title>
   
   <!-- Fontes Google Inter e Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -917,6 +917,18 @@
         <!-- PAINEL DA TCC (TRÍADE + DISTORÇÃO + PRESCRIÇÃO) -->
         <div class="tcc-container">
           
+          <!-- NOVO BLOCO: POR QUE VOCÊ SE SENTE ASSIM? -->
+          <div class="tcc-box" style="border-left: 4px solid var(--accent-indigo); background: rgba(99, 102, 241, 0.07);">
+            <span class="tcc-box-tag" style="color: #a5b4fc;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Por que você se sente assim? (Leitura Psicológica)
+            </span>
+            <div class="tcc-box-title" id="whyTitle" style="color: #e0e7ff; margin-bottom: 0.2rem;">Compreendendo o seu padrão</div>
+            <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.55;" id="whyText">
+              Analisando suas respostas...
+            </p>
+          </div>
+
           <div class="tcc-box">
             <span class="tcc-box-tag">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2v20"/></svg>
@@ -1014,6 +1026,9 @@
     const triadThought = document.getElementById('triadThought');
     const triadEmotion = document.getElementById('triadEmotion');
 
+    const whyTitle = document.getElementById('whyTitle');
+    const whyText = document.getElementById('whyText');
+
     const distortionTitle = document.getElementById('distortionTitle');
     const distortionDesc = document.getElementById('distortionDesc');
     const prescTitle = document.getElementById('prescTitle');
@@ -1105,12 +1120,15 @@
         statusBadge.style.borderColor = "rgba(16, 185, 129, 0.4)";
         statusBarFill.style.backgroundColor = "#10b981";
 
+        whyTitle.textContent = "Você é assim porque aprendeu que viver bem não é ter tudo sob controle";
+        whyText.textContent = "Você provavelmente já quebrou algumas 'jarras' na vida e percebeu que sofrer brigando contra o inevitável só desgasta. Em vez de esperar uma grande vitória heróica para se permitir ser feliz, você encontra afeto e dignidade nos pequenos momentos cotidianos — numa conversa sincera, no café da manhã, nas pessoas ao seu redor. Você sente a dor do imprevisto, mas não transforma o imprevisto num tribunal contra o seu próprio valor.";
+
         triadSituation.textContent = "Planos alterados por imprevistos normais da vida adulta.";
         triadThought.textContent = "'A vida acontece no caminho. O que construímos juntos tem valor real.'";
         triadEmotion.textContent = "Paz, contentamento, gratidão e flexibilidade de rota.";
 
         distortionTitle.textContent = "Pensamento Funcional & Reestruturação Ativa";
-        distortionDesc.textContent = "Excelente tolerância à frustração. O indivíduo valoriza o processo e os afetos cotidianos, sem subordinar sua identidade a uma meta heróica inalcançável.";
+        distortionDesc.textContent = "Excelente tolerância à frustração. O indivíduo valoriza o processo e os afetos cotidianos, sem subordinar sua identidade a uma meta inalcançável.";
 
         prescTitle.textContent = "Manutenção: O Livro das Próximas Aventuras";
         prescSteps.innerHTML = `
@@ -1125,6 +1143,9 @@
         statusBadge.style.color = "#fda4af";
         statusBadge.style.borderColor = "rgba(244, 63, 94, 0.4)";
         statusBarFill.style.backgroundColor = "#f43f5e";
+
+        whyTitle.textContent = "Você é assim porque no fundo sente que só terá valor se for admirado";
+        whyText.textContent = "Você provavelmente cresceu ou vive num ambiente que exigia alta performance constante, gerando a crença inconsciente de que o afeto e o respeito dependem do seu sucesso visível. Quando você vê outras pessoas avançando ou sente que não atingiu o topo, isso não dói apenas como uma meta adiada — dói como uma ameaça existencial de rejeição e mediocridade. Por isso, você sacrifica descanso, sono e relacionamentos para continuar provando quem você é.";
 
         triadSituation.textContent = "Exposição social, comparação de conquistas e cobrança por status.";
         triadThought.textContent = "'Tenho que ser grandioso a qualquer custo, senão serei esquecido e rejeitado.'";
@@ -1147,6 +1168,9 @@
         statusBadge.style.borderColor = "rgba(245, 158, 11, 0.4)";
         statusBarFill.style.backgroundColor = "#f59e0b";
 
+        whyTitle.textContent = "Você é assim porque carrega o peso invisível de promessas e expectativas não cumpridas";
+        whyText.textContent = "Você provavelmente sente uma cobrança interna silenciosa e esmagadora, achando que 'deveria' estar num patamar muito diferente da vida. Quando as coisas dão errado ou imprevistos acontecem, você não enxerga apenas como um contratempo prático; você sente como se a culpa fosse exclusivamente sua por não ter dado conta de tudo. Para se defender da dor da frustração, sua mente tende a fechar as portas, adotando uma postura mais desconfiada, ranzinza ou isolada do mundo.";
+
         triadSituation.textContent = "A jarra quebrou; imprevistos atrasam a grande meta da juventude.";
         triadThought.textContent = "'Eu estraguei tudo. Minha vida não valeu a pena porque nunca cheguei lá.'";
         triadEmotion.textContent = "Amargura, luto cristalizado, culpa e apatia defensiva.";
@@ -1167,6 +1191,9 @@
         statusBadge.style.color = "#67e8f9";
         statusBadge.style.borderColor = "rgba(6, 182, 212, 0.4)";
         statusBarFill.style.backgroundColor = "#06b6d4";
+
+        whyTitle.textContent = "Você é assim porque busca conexão genuína e recusa a frieza da vida adulta";
+        whyText.textContent = "Você provavelmente sente que o excesso de planejamento e seriedade do mundo adulto tira a graça das relações humanas. Você prefere rir de bobagens, se apegar a pequenos detalhes e estar presente com as pessoas do que viver numa planilha rígida de cobranças. Por outro lado, às vezes você sente um certo desamparo ou ansiedade sobre o futuro exatamente por não saber por onde começar a organizar as coisas práticas da vida.";
 
         triadSituation.textContent = "Rotina comum sem grandes cobranças, mas com carência de direção.";
         triadThought.textContent = "'Gosto de estar aqui, mas às vezes me perco ou sinto que falta um rumo.'";
