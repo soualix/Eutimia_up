@@ -119,6 +119,76 @@
       margin-bottom: 0.75rem;
     }
 
+    .academic-info-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.1rem;
+      margin-bottom: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .academic-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 0.5rem;
+    }
+
+    .academic-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .academic-meta-item strong {
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    .discentes-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .discentes-title {
+      font-size: 0.73rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #a5b4fc;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .discentes-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .discente-pill {
+      font-size: 0.75rem;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: #c7d2fe;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
     .tag {
       font-size: 0.72rem;
       text-transform: uppercase;
@@ -599,10 +669,36 @@
 
     footer {
       text-align: center;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-dim);
-      padding: 1rem 0;
+      padding: 1.25rem 0;
       margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .author-credit {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      letter-spacing: 0.02em;
+    }
+
+    .author-credit span {
+      background: linear-gradient(135deg, #a5b4fc 0%, var(--up-yellow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -612,8 +708,36 @@
     
     <!-- CABEÇALHO -->
     <header>
+      <!-- BLOCO ACADÊMICO REFINADO -->
+      <div class="academic-info-card">
+        <div class="academic-row">
+          <div class="academic-meta-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+            <span>Disciplina: <strong>Processos Psicológicos Contemporâneos</strong></span>
+          </div>
+          <div class="academic-meta-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Docente: <strong>Jacqueline Farias Galvao</strong></span>
+          </div>
+        </div>
+
+        <div class="discentes-block">
+          <div class="discentes-title">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Discentes (Equipe 5):
+          </div>
+          <div class="discentes-list">
+            <span class="discente-pill">• Eliziane RRGK</span>
+            <span class="discente-pill">• Andressa Lemos</span>
+            <span class="discente-pill">• Marcos Daniel</span>
+            <span class="discente-pill">• Esther Lira</span>
+            <span class="discente-pill">• Sulamyta</span>
+            <span class="discente-pill">• Alana Jeyse</span>
+          </div>
+        </div>
+      </div>
+
       <div class="badge-bar">
-        <span class="tag tag-tcc">TCC Básica • 2º Semestre</span>
         <span class="tag tag-up">Filme: Up - Altas Aventuras</span>
         <span class="tag">Equipe 5 • Psicologia</span>
       </div>
@@ -850,7 +974,10 @@
 
     <!-- RODAPÉ -->
     <footer>
-      Trabalho de Regulação Emocional • Equipe 5 • 2º Semestre de Psicologia • Baseado em Aaron Beck & Up: Altas Aventuras
+      <div>Atividade de Regulação Emocional • Processos Psicológicos Contemporâneos • Profª Jacqueline Farias Galvao</div>
+      <div class="author-credit">
+        criado por <span>Elis Robledilho</span>
+      </div>
     </footer>
 
   </div>
