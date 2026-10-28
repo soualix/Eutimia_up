@@ -111,6 +111,79 @@
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
 
+    /* Layout Integrado do Cabeçalho com o Pôster */
+    .header-hero-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 860px) {
+      .header-hero-wrapper {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 1.5rem;
+      }
+
+      .header-text-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .header-image-col {
+        width: 175px;
+        min-width: 175px;
+        max-width: 190px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .hero-poster-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      max-height: 260px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.7), 0 0 25px -4px rgba(251, 191, 36, 0.25);
+      background: rgba(15, 23, 42, 0.85);
+      display: flex;
+    }
+
+    .hero-poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-poster-frame:hover .hero-poster-img {
+      transform: scale(1.04);
+    }
+
+    .hero-poster-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 0.5rem;
+      background: linear-gradient(to top, rgba(7, 10, 18, 0.95) 0%, rgba(7, 10, 18, 0.4) 70%, transparent 100%);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--up-yellow);
+      pointer-events: none;
+    }
+
     .badge-bar {
       display: flex;
       flex-wrap: wrap;
@@ -737,14 +810,32 @@
         </div>
       </div>
 
-      <div class="badge-bar">
-        <span class="tag tag-up">Filme: Up - Altas Aventuras</span>
-        <span class="tag">Equipe 5 • Psicologia</span>
+      <!-- CONTEÚDO PRINCIPAL DO HEADER + CARD COM A IMAGEM -->
+      <div class="header-hero-wrapper">
+        <div class="header-text-col">
+          <div class="badge-bar">
+            <span class="tag tag-up">Filme: Up - Altas Aventuras</span>
+            <span class="tag">Equipe 5 • Psicologia</span>
+          </div>
+          <h1>Termômetro de Eutimia & Flexibilidade Cognitiva</h1>
+          <p class="subtitle">
+            Instrumento avaliativo e psicoeducativo para a vida adulta (28 a 42 anos). Avalie os eixos do modelo cognitivo de Beck a partir das 6 metáforas do filme *Up* e obtenha a prescrição de regulação emocional em tempo real.
+          </p>
+        </div>
+
+        <!-- MOLDURA DA IMAGEM DOS BALÕES -->
+        <div class="header-image-col">
+          <div class="hero-poster-frame">
+            <img 
+              src="IMG_4089.jpeg" 
+              alt="Casa de Up voando com balões coloridos" 
+              class="hero-poster-img"
+              onerror="if (this.src.endsWith('IMG_4089.jpeg')) { this.src='IMG_4089.jpg'; } else if (this.src.endsWith('IMG_4089.jpg')) { this.src='IMG_4089.png'; } else if (this.src.endsWith('IMG_4089.png')) { this.src='IMG_4089.PNG'; } else { this.onerror=null; this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80'; }"
+            >
+            <div class="hero-poster-overlay">Altas Aventuras</div>
+          </div>
+        </div>
       </div>
-      <h1>Termômetro de Eutimia & Flexibilidade Cognitiva</h1>
-      <p class="subtitle">
-        Instrumento avaliativo e psicoeducativo para a vida adulta (28 a 42 anos). Avalie os eixos do modelo cognitivo de Beck a partir das 6 metáforas do filme *Up* e obtenha a prescrição de regulação emocional em tempo real.
-      </p>
     </header>
 
     <!-- PRESETS RÁPIDOS -->
